@@ -1,0 +1,18 @@
+[
+    {
+        "id": "1",
+        "name": "jabłko",
+        "category": "fruit",
+        "price": 2,
+        "image": "./jablko.jpg",
+        "opis":"Starannie wyselekcjonowane jabłuszka ..."
+      },
+      {
+        "id": "",
+        "name": "",
+        "category": "",
+        "price": "",
+        "image": "",
+        "opis": ""
+      }
+]
