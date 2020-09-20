@@ -8,15 +8,25 @@
         "opis":"Starannie wyselekcjonowane jabłuszka ..."
       },
       {
-        "id": "",
-        "name": "",
-        "category": "",
-        "price": "",
-        "image": "",
-        "opis": "",
-        "origin":"",
-        "delivery":"DHL,InPost itp.",
-        "size":"small, medium, big"
+        "id": 1,
+        "name": "Polska Papierówka",
+        "category": "food",
+        "price": {
+          "value":50,
+          "unit":"kg"
+        },
+        "image": "https://via.placeholder.com/300",
+        "opis": "jesteśmy najlepsi",
+        "origin":"Pomorskie",
+        "delivery":[{
+          "company":"DHL",
+          "price":10,
+          "unitlimit": 2
+        }]
         
       }
 ]
+
+
+
+
