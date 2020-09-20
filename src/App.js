@@ -3,6 +3,11 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  // Tak pobieramy dane //
+  fetch('/product-list.json')
+    .then(r => r.json())
+    .then(x => console.log(x))
+
   return (
     <div className="App">
       <header className="App-header">
