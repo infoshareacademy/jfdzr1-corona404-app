@@ -1,0 +1,108 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.main_container{
+    width:100vw;
+    margin: auto;
+    padding: 80px 200px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-gap: 10px;
+    grid-template-areas:
+    "header image"
+    "graphs image"
+    "graphs comments";
+    background-color: rgb(250, 250, 250);
+}
+
+.header_container{
+    grid-area: header;
+    padding: 20px 0 20px 50px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: -8px 8px 28px -7px rgba(145,145,145,1);
+}
+
+.title-1{
+    font-size: clamp(40px, 5vw, 76px);
+    font-weight: 600;
+    letter-spacing: 6px;
+}
+
+.title-2{
+    font-size: clamp(20px, 3vw, 30px);
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
+.shop_img{
+    grid-area: image;
+    width: 40vw;
+    margin-top: 15vh;
+}
+
+.comments_container{
+    width: 750px;
+    grid-area: comments;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+    margin: 0 auto 20px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: -8px 8px 28px -7px rgba(145,145,145,1);
+}
+
+.comment{
+    width: 30%;
+    padding: 10px;
+    text-align: center;
+    position: relative;
+}
+
+.comment:nth-child(even){
+    align-self: flex-end;
+}
+
+.comment_title{
+    font-size: 1.2vw;
+    font-weight: 300;
+    font-style: italic;
+}
+
+.comment_author{
+    font-size: .8vw;
+    font-weight: 500;
+    font-style: italic;
+}
+
+.graph_container{
+    grid-area: graphs;
+    width: 100%;
+}
+
+.bar{
+    box-sizing: content-box;
+    padding: 15px;
+    margin: 20px 0;
+    width: 600px;
+    height: 300px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: -8px 8px 28px -7px rgba(145,145,145,1);
+}
+
+.pie{
+    box-sizing: content-box;
+    margin: 20px 0;
+    width: 320px;
+    height: 320px;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: -8px 8px 28px -7px rgba(145,145,145,1);
+}
