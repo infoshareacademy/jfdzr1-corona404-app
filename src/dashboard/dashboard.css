@@ -5,79 +5,68 @@
 }
 
 .main_container{
-    width:100vw;
+    width: 100vw;
     margin: auto;
-    padding: 80px 200px;
+    padding: 80px 12vw;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
-    grid-gap: 10px;
+    grid-template-rows: 1fr;
     grid-template-areas:
-    "header image"
+    "title image"
     "graphs image"
-    "graphs comments";
-    background-color: rgb(250, 250, 250);
+    "graphs title2"
+    "comments comments";
+    background-image: linear-gradient(150deg, #ffffff 0%, #b2dddf 81%);
 }
 
 .header_container{
-    grid-area: header;
-    padding: 20px 0 20px 50px;
-    background-color: #fff;
-    border-radius: 15px;
-    box-shadow: -8px 8px 28px -7px rgba(145,145,145,1);
+    grid-area: title;
 }
 
 .title-1{
-    font-size: clamp(40px, 5vw, 76px);
+    font-size: clamp(40px, 5vw, 85px);
     font-weight: 600;
     letter-spacing: 6px;
 }
 
 .title-2{
-    font-size: clamp(20px, 3vw, 30px);
+    font-size: clamp(20px, 3vw, 38px);
     font-weight: 400;
     letter-spacing: 2px;
 }
 
 .shop_img{
     grid-area: image;
-    width: 40vw;
-    margin-top: 15vh;
+    width: 700px;
+    margin-top: 5vh;
 }
 
-.comments_container{
-    width: 750px;
-    grid-area: comments;
-    display: flex;
-    flex-flow: row;
-    justify-content: space-around;
-    margin: 0 auto 20px;
-    background-color: #fff;
-    border-radius: 15px;
-    box-shadow: -8px 8px 28px -7px rgba(145,145,145,1);
-}
-
-.comment{
-    width: 30%;
-    padding: 10px;
+.header2__container{
+    grid-area: title2;
+    height: 100%;
     text-align: center;
-    position: relative;
+    border: 1px white solidariant="contained" color="secondary";
+    margin-bottom: 3vh;
 }
 
-.comment:nth-child(even){
-    align-self: flex-end;
+.header2__title{
+    font-size: clamp(30px, 4vw, 50px);
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
 }
 
-.comment_title{
-    font-size: 1.2vw;
-    font-weight: 300;
-    font-style: italic;
+.header2__span{
+    font-weight: 800;
+    font-size: clamp(30px, 4vw, 60px);
+    background:linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-.comment_author{
-    font-size: .8vw;
-    font-weight: 500;
-    font-style: italic;
+.header2__button{
+    width: 150px;
+    height: 50px;
 }
 
 .graph_container{
@@ -91,9 +80,6 @@
     margin: 20px 0;
     width: 600px;
     height: 300px;
-    background-color: #fff;
-    border-radius: 15px;
-    box-shadow: -8px 8px 28px -7px rgba(145,145,145,1);
 }
 
 .pie{
@@ -102,7 +88,130 @@
     width: 320px;
     height: 320px;
     padding: 15px;
-    background-color: #fff;
-    border-radius: 15px;
-    box-shadow: -8px 8px 28px -7px rgba(145,145,145,1);
+}
+
+.comments__container{
+    grid-area: comments;
+    width: 75%;
+    margin:10vh auto;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+}
+
+.comment{
+    width: 260px;
+}
+
+.comment__title{
+    font-size: 24px;
+    font-weight: 300;
+}
+
+.comment__author{
+    font-size: 20px;
+    font-weight: 500;
+    margin: 5px;
+}
+
+@media (max-width:1500px){
+    .main_container{
+        padding: 80px 10vw;
+    }
+
+    .shop_img{
+        width: 45vw;
+        margin-top: 10vh;
+    }
+
+    .bar{
+        padding: 15px;
+        margin: 20px 0;
+        width: 500px;
+        height: 250px;
+    }
+    
+    .pie{
+        margin: 20px 0;
+        width: 300px;
+        height: 300px;
+        padding: 15px;
+    }
+
+    .header2__container{
+        zoom: .8;
+        margin-bottom: 5vh;
+    }
+    
+}
+
+@media (max-width:1300px){
+    .main_container{
+        padding: 80px 50px;
+    }
+
+    .header_container{
+        transform: translateX(5vw);
+    }
+
+    .shop_img{
+        transform: translateX(-2vw);
+    }
+
+    .comments__container{
+        zoom: .8;
+    }
+
+    .pie{
+        transform: translateX(5vw);
+    }
+
+    .bar{
+        transform: translateX(3vw);
+    }
+}
+
+@media (max-width:1100px){
+    .main_container{
+        grid-template-areas:
+        "title title"
+        "title2 image"
+        "graphs graphs"
+        "comments comments";
+    }
+
+    .header_container{
+        position: absolute;
+        
+    }
+
+    .shop_img{
+       margin:50px auto;
+       width: 50vw;
+    }
+
+    .header2__container{
+        margin-top: 250px;
+    }
+
+    .graph_container{
+        display: flex;
+    }
+
+    .pie{
+        transform: translateX(0vw);
+        width: 40vw;
+    }
+
+    .bar{
+        transform: translateX(0vw);
+        width: 40vw;
+    }
+
+    .comments__container{
+        width: 90%;
+        zoom: .7;
+    }
 }

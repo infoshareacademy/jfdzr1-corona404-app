@@ -9,7 +9,7 @@ const data = {
 		'Blue'
 	],
 	datasets: [{
-		data: [200, 50, 100],
+		data: [80, 40, 20],
 		backgroundColor: [
 		'#457b9d',
 		'#a8dadc',
