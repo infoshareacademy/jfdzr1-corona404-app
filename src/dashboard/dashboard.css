@@ -7,7 +7,7 @@
 .main_container{
     width: 100vw;
     margin: auto;
-    padding: 80px 12vw;
+    padding: 40px 12vw;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
