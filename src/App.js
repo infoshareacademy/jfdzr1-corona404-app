@@ -1,10 +1,15 @@
 import React from 'react';
 import Dashboard from './dashboard/dashboard'
+import {Route, Switch} from "react-router-dom";
 
 function App() {
 
   return (
-    <Dashboard/>
+    <Switch>
+      <Route path="/dashboard">
+        <Dashboard/>
+      </Route>
+    </Switch>
   );
 }
 
