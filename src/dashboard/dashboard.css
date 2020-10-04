@@ -64,11 +64,6 @@
     -webkit-text-fill-color: transparent;
 }
 
-.header2__button{
-    width: 150px;
-    height: 50px;
-}
-
 .graph_container{
     grid-area: graphs;
     width: 100%;
@@ -78,15 +73,16 @@
     box-sizing: content-box;
     padding: 15px;
     margin: 20px 0;
-    width: 600px;
+     width: 600px;
     height: 300px;
 }
 
 .pie{
+    text-align: center;
     box-sizing: content-box;
-    margin: 20px 0;
-    width: 320px;
-    height: 320px;
+    margin: 20px 0 0 2vw;
+    width: 300px;
+    height: 300px;
     padding: 15px;
 }
 

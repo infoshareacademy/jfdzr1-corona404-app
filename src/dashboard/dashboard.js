@@ -2,7 +2,7 @@
 import React from 'react';
 import './dashboard.css';
 import { Title } from './title';
-import { Title2 } from './title2';
+import { Subtitle } from './subtitle';
 import shop from './images/money.svg';
 import Comments from './comments';
 import Charts from './charts';
@@ -21,7 +21,7 @@ class Dashboard extends React.Component{
             <Title></Title>
             <img src={shop} className="shop_img" alt="shopping app"></img>
                 <Charts></Charts>
-                <Title2></Title2>
+                <Subtitle></Subtitle>
                 <Comments></Comments>
             </section>
         )

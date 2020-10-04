@@ -2,28 +2,29 @@ import React from 'react';
 import './dashboard.css';
 import Rating from '@material-ui/lab/Rating';
 import Box from '@material-ui/core/Box';
+import Typography from '@material-ui/core/Typography'
 
 function Comments() {
-    const [value] = React.useState(5);
+    const value = 5;
     return (
         <div className="comments__container">
             <div className="comment">
-                <h2 className="comment__title">"Best shopping website i've ever used"</h2>
-                <h3 className="comment__author">John B.</h3>
+                <Typography variant="h5">"Best shopping website i've ever used"</Typography>
+                <Typography variant="h6">John B.</Typography>
                 <Box component="fieldset" mb={3} borderColor="transparent">
                     <Rating name="read-only" value={value} readOnly />
                 </Box>
             </div>
             <div className="comment">
-                <h2 className="comment__title">"Świetne ceny i zróżnicowane produkty"</h2>
-                <h3 className="comment__author">Vivienne</h3>
+                <Typography variant="h5">"Świetne ceny i zróżnicowane produkty"</Typography>
+                <Typography variant="h6">Vivienne</Typography>
                 <Box component="fieldset" mb={3} borderColor="transparent">
                     <Rating name="read-only" value={value} readOnly />
                 </Box>
             </div>
             <div className="comment">
-                <h2 className="comment__title">"Codziennie znajduje tu coś dla siebie"</h2>
-                <h3 className="comment__author">Jacob</h3>
+                <Typography variant="h5">"Codziennie znajduje tu coś dla siebie"</Typography>
+                <Typography variant="h6">Jacob</Typography>
                 <Box component="fieldset" mb={3} borderColor="transparent">
                     <Rating name="read-only" value={value} readOnly />
                 </Box>

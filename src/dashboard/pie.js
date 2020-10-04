@@ -1,12 +1,13 @@
 import React from 'react';
-import {Pie} from 'react-chartjs-2';
+import { Doughnut } from 'react-chartjs-2';
+import Typography from '@material-ui/core/Typography';
 import './dashboard.css';
 
 const data = {
 	labels: [
-		'Dark Blue',
-		'Light Blue',
-		'Blue'
+		'5 ⭐',
+		'4 ⭐',
+		'3 ⭐'
 	],
 	datasets: [{
 		data: [80, 40, 20],
@@ -24,16 +25,16 @@ const data = {
 };
 
 class PieChart extends React.Component{
-  
   render() {
     return (
       <div className="pie">
-        <Pie data={data}
+		  <Typography variant="h6" style={{fontWeight: '300'}}>Oceny Klientów</Typography>
+        <Doughnut data={data}
         width={50}
         height={50}
         options={{
-          maintainAspectRatio: false
-        }} />
+            maintainAspectRatio: false
+          }}/>
       </div>
     );
   }
