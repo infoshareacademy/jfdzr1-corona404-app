@@ -1,7 +1,7 @@
 import React from 'react';
 import Dashboard from './dashboard/dashboard'
 import {Route, Switch} from "react-router-dom";
-import { productCard } from './products/productCards';
+import Cards from './products/productCards/Cards';
 
 function App() {
 
@@ -11,7 +11,7 @@ function App() {
         <Dashboard/>
       </Route>
       <Route path="/product-card">
-        <productCard/>
+        <Cards/>
       </Route>
     </Switch>
   );
