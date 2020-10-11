@@ -1,30 +1,19 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Dashboard from './dashboard/dashboard'
+import {Route, Switch} from "react-router-dom";
+import { productCard } from './products/productCards';
 
 function App() {
-  // Tak pobieramy dane //
-  fetch('/product-list.json')
-    .then(r => r.json())
-    .then(x => console.log(x))
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Switch>
+      <Route path="/dashboard">
+        <Dashboard/>
+      </Route>
+      <Route path="/product-card">
+        <productCard/>
+      </Route>
+    </Switch>
   );
 }
 
