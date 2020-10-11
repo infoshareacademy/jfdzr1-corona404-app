@@ -21,7 +21,12 @@ const data = {
 		'#a8dadc',
 		'#83c5be'
 		]
-	}]
+	}],
+	options: {
+		legend: {
+			position: 'bottom',
+		}
+	}
 };
 
 class PieChart extends React.Component{
