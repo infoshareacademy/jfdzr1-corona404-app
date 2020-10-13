@@ -4,6 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 
 class Products extends React.Component {
@@ -15,18 +16,24 @@ class Products extends React.Component {
                     this.props.products.map((product) => {
                         return (
                             <div key={product.id} className="product__card">
-                                
-                                <img src={product.image} style={{ width: "180px"}}></img>
+
+                                <img src={product.image} style={{ width: "180px" }}></img>
 
                                 <div className="product__midbox">
                                     <Typography variant="h5">{product.name}</Typography>
                                     <Typography variant="h7">{product.opis}</Typography>
-                                    <Button style={{ width: '40px', bottom: "-30px" }}
-                                     onClick={() => this.props.handleOnDelete(product.id)}>Delete</Button>
+                                    <Button
+                                        style={{ fontSize: '12px', width: '80px', bottom: "-35px" }}
+                                        onClick={() => this.props.handleOnDelete(product.id)}>
+                                        <DeleteIcon style={{ fontSize: '20px' }} />
+                                        Usuń
+                                    </Button>
                                 </div>
 
                                 <div className="product__rightbox">
-                                    <Select defaultValue={1} style={{ width: '50%' }} onChange={(event) => this.props.handleOnChange(event, product)}>
+                                    <Select defaultValue={1}
+                                        style={{ width: '50%' }}
+                                        onChange={(event) => this.props.handleOnChange(event, product)}>
                                         <MenuItem value={1}>1</MenuItem>
                                         <MenuItem value={2}>2</MenuItem>
                                         <MenuItem value={3}>3</MenuItem>
@@ -34,10 +41,10 @@ class Products extends React.Component {
                                         <MenuItem value={5}>5</MenuItem>
                                     </Select>
                                     <Typography variant="h7">{product.amount}</Typography>
-                                    <Typography variant="h7" style={{ width: "90%" }}>{product.price.value} zł</Typography>
+                                    <Typography variant="h7" style={{ width: "80%" }}>{product.price.value} zł</Typography>
                                 </div>
                             </div>
-                            
+
                         )
                     })
                 }

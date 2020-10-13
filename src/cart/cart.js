@@ -11,7 +11,7 @@ class Cart extends React.Component {
             "name": "Bawełniana ECO Koszulka",
             "category": "clothes",
             "price": {
-                "value": 100.00,
+                "value": 124.99,
                 "unit": 1
             },
             "image": "https://1.allegroimg.com/s512/0320f0/3541c61d4c2cbdadea6c3720d821/Koszulka-bawelniana-T-shirt-ADLER-MALFINI-132-S",
@@ -28,7 +28,7 @@ class Cart extends React.Component {
             "name": "Buty Skórzane",
             "category": "clothes",
             "price": {
-                "value": 100.00,
+                "value": 229.99,
                 "unit": 1
             },
             "image": "https://sklepmarka.pl/2321/buty-meskie-casual-skora-polskie-g2681.jpg",
@@ -45,7 +45,7 @@ class Cart extends React.Component {
             "name": "Wełniany szal",
             "category": "clothes",
             "price": {
-                "value": 100.00,
+                "value": 80.99,
                 "unit": 1
             },
             "image": "https://cdn.shoplo.com/5412/products/th640/aaag/20-3c11a2dc56b112cddf7c2d53c4dd36f05d6d1074cfb136-22531055.jpg",
@@ -57,7 +57,9 @@ class Cart extends React.Component {
                 "unitlimit": false
             }]
         }],
-        totalPrice: 0
+        totalPrice: 0,
+        sendPrice: 25,
+        finalPrice: 0,
     }
 
     handleOnDelete = (productId) => {
@@ -73,7 +75,7 @@ class Cart extends React.Component {
 
         this.setState({
             products: filteredArray,
-            totalPrice: newTotalPrice
+            totalPrice: newTotalPrice.toFixed(2)
         })
     }
 
@@ -82,7 +84,7 @@ class Cart extends React.Component {
             this.state.totalPrice += prod.price.value * prod.price.unit
         })
         this.setState({
-            totalPrice: this.state.totalPrice
+            totalPrice: this.state.totalPrice.toFixed(2)
         })
     }
 
@@ -97,7 +99,7 @@ class Cart extends React.Component {
 
         this.setState({
             products: productList,
-            totalPrice: totalPrice
+            totalPrice: totalPrice.toFixed(2)
         })
     }
 
@@ -115,6 +117,7 @@ class Cart extends React.Component {
                     <div className="summary">
                         <Summary
                             totalPrice={this.state.totalPrice}
+                            sendPrice={this.state.sendPrice}
                         />
                     </div>
                     <div className="payments">
