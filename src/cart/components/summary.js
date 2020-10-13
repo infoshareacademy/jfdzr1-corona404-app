@@ -33,7 +33,7 @@ class Summary extends React.Component {
                 <div style={{ margin: "50px auto", textAlign: 'left', width:'80%' }}>
                     <div style={{marginBottom:"30px"}}>
                         <Typography variant="h7">Łączna kwota <br /> (w tym VAT) :
-                        <span style={{fontWeight:"800",float:'right'}}> {this.state.totalPrice} zł</span>
+                        <span style={{fontWeight:"800",float:'right'}}> {this.props.totalPrice} zł</span>
                         </Typography>
                     </div>
                     <div>
