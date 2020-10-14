@@ -1,4 +1,9 @@
-.productsContainer {
+.sectionLayout {
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+}
+
+.productContainer {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
