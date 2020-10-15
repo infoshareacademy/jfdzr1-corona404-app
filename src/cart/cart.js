@@ -60,7 +60,7 @@ class Cart extends React.Component {
           "price": 5,
           "unitlimit": false
         }]
-      }],
+      },],
     totalPrice: 0,
     sendPrice: 25,
   }

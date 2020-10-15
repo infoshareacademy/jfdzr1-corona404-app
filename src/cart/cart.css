@@ -6,17 +6,17 @@
 
 .cart__body{
     width: 100vw;
-    min-height: 120vh;
-    background-image: linear-gradient(150deg, #cacaca 0%, #9c9c9c 80%);
+    min-height: 100vh;
+    background-image: linear-gradient(150deg, #a7cbd1 0%, #76767a 80%);
 }
 
 .cart__container{
     position: relative;
     max-width: 1200px;
     min-height: 620px;
-    margin:auto;
-    padding:60px 40px;
-    transform: translateY(120px);
+    margin: auto;
+    transform: translateY(15vh);
+    padding:40px 40px;
     background-color: rgb(238, 238, 238);
     display: grid;
     grid-template-areas: 
@@ -26,7 +26,6 @@
 }
 
 .product__list{
-    height: 20%;
     width: 100%;
     grid-area: list;
     display: flex;
@@ -40,7 +39,7 @@
 
 .summary{
     grid-area: summary;
-    position: absolute;
+    position: absolute; 
     right: 10%;
     text-align: center;
     background-color: #fff;
@@ -64,7 +63,7 @@
 
 .product__card{
     display: block;
-    width: 75%;
+    width: 85%;
     background-color: rgb(255, 255, 255);
     padding: 20px;
     margin:10px 0;
