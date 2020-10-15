@@ -24,7 +24,7 @@ const StyledButton = withStyles({
 class Summary extends React.Component {
 
     state = {
-        sendPrice: 50,
+        sendPrice: 25,
         discountCode: '',
         open: false
     }
