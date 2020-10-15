@@ -3,6 +3,7 @@ import { Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Discount from './discount';
+import DiscountPopup from './dicountPopup';
 
 const StyledButton = withStyles({
     root: {
@@ -23,13 +24,28 @@ const StyledButton = withStyles({
 class Summary extends React.Component {
 
     state = {
-        sendPrice: 0
+        sendPrice: 50,
+        discountCode: '',
+        open: false
     }
 
-    handleOnSubmit(event, discountCode){
+    handleOnSubmit = (event, passedDiscountCode) => {
         event.preventDefault();
-        console.log(discountCode)
+        this.setState({
+            discountCode: passedDiscountCode
+        })
+
+        if (passedDiscountCode === "CORONA") {
+            this.setState({
+                open: true
+            })
+        } else {
+            this.setState({
+                open: false
+            })
+        }
     }
+
 
     render() {
         return (
@@ -44,17 +60,22 @@ class Summary extends React.Component {
                     </div>
                     <div>
                         <Typography variant="h7">Wysyłka :
-                        <span style={{ fontWeight: "800", float: 'right' }}>{this.props.sendPrice} zł</span>
+                        <span style={{ fontWeight: "800", float: 'right' }}>
+                                {this.state.discountCode === "CORONA" ? "Gratis" : this.state.sendPrice + " zł"}</span>
                         </Typography>
                     </div>
                     <div style={{ textAlign: 'center', marginTop: '50px' }}>
                         <StyledButton>Zamów</StyledButton>
                     </div>
                 </div>
-                <Discount 
-                sendPrice={this.state.sendPrice}
-                handleOnSubmit={this.handleOnSubmit}
+                <Discount
+                    sendPrice={this.state.sendPrice}
+                    handleOnSubmit={this.handleOnSubmit}
                 />
+                <div>
+                    {this.state.open == true &&
+                        <DiscountPopup open={this.state.open}></DiscountPopup>}
+                </div>
             </>
         )
     }

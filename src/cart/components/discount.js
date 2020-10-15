@@ -9,12 +9,12 @@ class Discount extends React.Component {
 
     state = {
         shouldShowDiscountBox: false,
-        discountCode: ''
+        discountCode:''
     }
 
     handleOnClick = () => {
         this.setState({
-            shouldShowDiscountBox: !this.state.shouldShowDiscountBox
+            shouldShowDiscountBox: !this.state.shouldShowDiscountBox,
         })
     }
 
@@ -23,6 +23,7 @@ class Discount extends React.Component {
             discountCode: event.target.value
         })
     }
+
 
     render() {
         return (
