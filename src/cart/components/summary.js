@@ -51,7 +51,7 @@ class Summary extends React.Component {
         return (
             <>
                 <Typography variant="h5">Podsumowanie</Typography>
-                <div style={{ margin: "50px auto", textAlign: 'left', width: '80%' }}>
+                <div className="summary_values">
 
                     <div style={{ marginBottom: "30px" }}>
                         <Typography variant="h7">Łączna kwota <br /> (w tym VAT) :
@@ -65,7 +65,7 @@ class Summary extends React.Component {
                         </Typography>
                     </div>
                     <div style={{ textAlign: 'center', marginTop: '50px' }}>
-                        <StyledButton>Zamów</StyledButton>
+                        <StyledButton className="order_button">Zamów</StyledButton>
                     </div>
                 </div>
                 <Discount

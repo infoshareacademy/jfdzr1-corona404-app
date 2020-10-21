@@ -17,7 +17,7 @@ class Products extends React.Component {
                         return (
                             <div key={product.id} className="product__card">
 
-                                <img src={product.image} style={{ width: "180px" }}></img>
+                                <img src={product.image} className="product_img"></img>
 
                                 <div className="product__midbox">
                                     <Typography variant="h5">{product.name}</Typography>

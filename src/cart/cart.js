@@ -123,9 +123,6 @@ class Cart extends React.Component {
               sendPrice={this.state.sendPrice}
             />
           </div>
-          <div className="payments">
-
-          </div>
         </div>
       </section>
     )
