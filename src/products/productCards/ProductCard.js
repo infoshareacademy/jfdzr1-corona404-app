@@ -4,36 +4,42 @@ import Card from "@material-ui/core/Card";
 import Button from "@material-ui/core/Button";
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
-import styles from '../products.css';
+import '../products.css';
 
 class ProductCard extends React.Component {
   state = {
-    likesCount: 0
+    productsToCart: []
   }
 
+  handleBuyClick = () => {
+    this.setState({
+      productsToCart: this.state.product
+    })
+  }
 
   render() {
-    return <div className={styles.sectionLayout}>
-      <Card style={{width: '300px'}}>
-        <CardContent>
-          <p className={styles.title}>
-            {this.props.product.name}
-          </p>
-          <div>
-            <img src={this.props.product.image} className={styles.img_wrapper}/>
-          </div>
-        </CardContent>
-        <CardActions>
-
-          <div size='small'>
-            <AttachMoneyIcon style={{ fontSize: '1.75rem'}}/> {this.props.product.price.value}{' '}zł{'/'}{this.props.product.price.unit}
-          </div>
-          <Button size="small">
-            <ShoppingCartIcon style={{ fontSize: '1.75rem'}}/>
-          </Button>
-        </CardActions>
-      </Card>
-    </div>
+    return (
+      <div>
+        <Card className="productContainer">
+          <CardContent>
+            <p className="title">
+              {this.props.product.name}
+            </p>
+            <div className="img_container">
+              <img src={this.props.product.image} className="img_wrapper"/>
+            </div>
+          </CardContent>
+          <CardActions className="cardActions">
+            <div size='small'>
+              <AttachMoneyIcon style={{ fontSize: '1.75rem'}}/> {this.props.product.price.value}{' '}zł{'/'}{this.props.product.price.unit}
+            </div>
+            <Button size="small">
+              <ShoppingCartIcon style={{ fontSize: '1.75rem'}} onClick={this.handleBuyClick}/>
+            </Button>
+          </CardActions>
+        </Card>
+      </div>
+    )
   }
 }
 

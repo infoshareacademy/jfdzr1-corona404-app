@@ -1,7 +1,7 @@
 import React from 'react';
 import ProductCard from './ProductCard';
 import { products } from '../products';
-import { Card } from '@material-ui/core';
+import '../products.css';
 
 class Cards extends React.Component {
     state = {
@@ -9,7 +9,8 @@ class Cards extends React.Component {
     }
 
     render() {
-        return <div>
+        return <div className="sectionLayout">
+
             {
                 this.state.products.map(product => (
                     <div style={{ marginBottom: '20px'}} key={product.id}>
@@ -17,6 +18,7 @@ class Cards extends React.Component {
                     </div>
                 ))
             }
+
         </div>
     }
 }
