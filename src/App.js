@@ -2,6 +2,7 @@ import React from 'react';
 import Dashboard from './dashboard/dashboard'
 import {Route, Switch} from "react-router-dom";
 import Cart from './cart/cart';
+import MiniDrawer from './navigation/navigation'
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
         <Cart/>
       </Route>
     </Switch>
+    <MiniDrawer/>
   );
 }
 
