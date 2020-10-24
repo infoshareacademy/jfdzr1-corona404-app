@@ -22,6 +22,7 @@ import ContactMailIcon from '@material-ui/icons/ContactMail';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import Dashboard from '../dashboard/dashboard';
 import {Route, Switch, Link, } from "react-router-dom";
+import Cart from '../cart/cart';
 
 
 
@@ -205,7 +206,7 @@ export default function MiniDrawer() {
               
              </Route>
              <Route path="/cart">
-              
+              <Cart/>
              </Route>
              <Route path="/form">
               
