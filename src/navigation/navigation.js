@@ -23,6 +23,7 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import Dashboard from '../dashboard/dashboard';
 import {Route, Switch, Link, } from "react-router-dom";
 import Cart from '../cart/cart';
+import Cards from '../products/productCards/Cards';
 
 
 
@@ -203,7 +204,7 @@ export default function MiniDrawer() {
              </Route>
 
              <Route path="/products">
-              
+              <Cards/>
              </Route>
              <Route path="/cart">
               <Cart/>
