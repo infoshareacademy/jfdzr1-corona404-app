@@ -1,15 +1,10 @@
 import React from 'react';
-import Dashboard from './dashboard/dashboard'
-import {Route, Switch} from "react-router-dom";
+import MiniDrawer from './navigation/navigation'
 
 function App() {
 
   return (
-    <Switch>
-      <Route path="/dashboard">
-        <Dashboard/>
-      </Route>
-    </Switch>
+    <MiniDrawer/>
   );
 }
 
