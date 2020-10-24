@@ -5,11 +5,10 @@
 }
 
 .cart__body{
-    width: 100vw;
     min-height: 100vh;
     display: block;
     overflow: auto;
-    background-image: linear-gradient(150deg, #d2d6d6 0%, #a9cacf 80%);
+    background-image: linear-gradient(150deg, #e6e4e4 0%, #b2dddf 81%);
 }
 
 .cart__container{
