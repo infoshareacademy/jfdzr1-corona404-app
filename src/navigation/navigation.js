@@ -17,6 +17,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import HomeIcon from '@material-ui/icons/Home';
 import SearchIcon from '@material-ui/icons/Search';
+import ContactMailIcon from '@material-ui/icons/ContactMail';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import Dashboard from '../dashboard/dashboard';
 import {Route, Switch, Link, } from "react-router-dom";
@@ -153,25 +154,45 @@ export default function MiniDrawer() {
             </ListItem>
             
             <ListItem button>
+            <Link to="/products" style={{textDecoration: 'none', display:'flex', color:'black'}}>
               <ListItemIcon><SearchIcon /></ListItemIcon>
               <ListItemText>Products</ListItemText>
+              </Link>
             </ListItem>
 
             <ListItem button>
+            <Link to="/cart" style={{textDecoration: 'none', display:'flex', color:'black'}}>
               <ListItemIcon><ShoppingCartIcon /></ListItemIcon>
               <ListItemText>Cart</ListItemText>
+              </Link>
+            </ListItem>
+
+            <ListItem button>
+            <Link to="/cart" style={{textDecoration: 'none', display:'flex', color:'black'}}>
+              <ListItemIcon><ContactMailIcon /></ListItemIcon>
+              <ListItemText>Form</ListItemText>
+              </Link>
             </ListItem>
             
 
         </List>
         
       </Drawer>
-      <main className={classes.content}>
+      <main className={classes.content} style={{margin:'0', padding:'0'}}>
         <div className={classes.toolbar} />
         <Typography paragraph>
           <Switch>
             <Route path="/dashboard">
               <Dashboard/>
+             </Route>
+             <Route path="/products">
+              
+             </Route>
+             <Route path="/cart">
+              
+             </Route>
+             <Route path="/form">
+              
              </Route>
            </Switch>
         </Typography>
