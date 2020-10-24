@@ -1,5 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
+import './navigation.css';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
@@ -23,10 +24,13 @@ import Dashboard from '../dashboard/dashboard';
 import {Route, Switch, Link, } from "react-router-dom";
 
 
+
 const drawerWidth = 220;
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    width:'100%'
+    
 
   },
   appBar: {
@@ -34,6 +38,7 @@ const useStyles = makeStyles((theme) => ({
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
+      
     }),
   },
   appBarShift: {
@@ -103,6 +108,7 @@ export default function MiniDrawer() {
     <div className={classes.root}>
       <CssBaseline />
       <AppBar
+        style={{ background: '#457b9d'}}
         position="fixed"
         color="secondary"
         className={clsx(classes.appBar, {
@@ -121,12 +127,16 @@ export default function MiniDrawer() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap>
-            Corona404.app
+          <Typography 
+          variant="h6" 
+          noWrap>
+  
+            Tylko Polska jakość!
           </Typography>
         </Toolbar>
       </AppBar>
       <Drawer
+      
         variant="permanent"
         className={clsx(classes.drawer, {
           [classes.drawerOpen]: open,
@@ -181,10 +191,16 @@ export default function MiniDrawer() {
       <main className={classes.content} style={{margin:'0', padding:'0'}}>
         <div className={classes.toolbar} />
         <Typography paragraph >
+        
           <Switch>
-            <Route path="/dashboard">
+            <Route exact path="/">
               <Dashboard/>
              </Route>
+             
+             <Route path="/dashboard">
+             <Dashboard/>
+             </Route>
+
              <Route path="/products">
               
              </Route>
