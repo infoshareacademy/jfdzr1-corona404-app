@@ -11,11 +11,11 @@ class ProductCard extends React.Component {
     productsToCart: []
   }
 
-  handleBuyClick = () => {
-    this.setState({
-      productsToCart: this.state.product
-    })
-  }
+  // handleBuyClick = () => {
+  //   this.setState({
+  //     productsToCart: this.state.product
+  //   })
+  // }
 
   render() {
     return (

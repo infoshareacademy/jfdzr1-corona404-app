@@ -10,7 +10,7 @@ function App() {
       <Route path="/dashboard">
         <Dashboard/>
       </Route>
-      <Route path="/product-card">
+      <Route path="/products">
         <Cards/>
       </Route>
     </Switch>
