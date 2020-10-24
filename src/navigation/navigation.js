@@ -23,11 +23,11 @@ import Dashboard from '../dashboard/dashboard';
 import {Route, Switch, Link, } from "react-router-dom";
 
 
-const drawerWidth = 240;
+const drawerWidth = 220;
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: 'flex',
+
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
@@ -180,7 +180,7 @@ export default function MiniDrawer() {
       </Drawer>
       <main className={classes.content} style={{margin:'0', padding:'0'}}>
         <div className={classes.toolbar} />
-        <Typography paragraph>
+        <Typography paragraph >
           <Switch>
             <Route path="/dashboard">
               <Dashboard/>
