@@ -1,0 +1,10 @@
+.MuiPaper-root{
+    background-color: #83c5be !important;
+    opacity: 0.95;
+}
+.MuiListItem-root{
+
+    border: 1px white solid !important;
+    height: 80px;
+    padding-bottom: 0px !important;
+}

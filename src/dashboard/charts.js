@@ -5,12 +5,10 @@ import BarChart from './bar';
 class Charts extends React.Component {
 	render() {
 		return (
-
 			<div className="graph_container">
-				<PieChart></PieChart>
-				<BarChart></BarChart>
+				<PieChart/>
+				<BarChart/>
 			</div>
-
 		)
 	}
 }
