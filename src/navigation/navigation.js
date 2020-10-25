@@ -112,7 +112,7 @@ export default function Navigation() {
     <div className={classes.root}>
       <CssBaseline />
       <AppBar
-        position="fixed"
+        position="sticky"
         color="secondary"
         style={{ background: "linear-gradient(#000428, #004e92)", color: "white", opacity: '0.95'}}
         className={clsx(classes.appBar, {
