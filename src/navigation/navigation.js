@@ -29,6 +29,12 @@ import Cards from '../products/productCards/Cards';
 
 const drawerWidth = 220;
 
+const styles = {
+  paper: {
+    backgroundColor: "blue"
+  }
+}
+
 const useStyles = makeStyles((theme) => ({
   root: {
     width:'100%'
@@ -67,12 +73,14 @@ const useStyles = makeStyles((theme) => ({
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
+     
     }),
   },
   drawerClose: {
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
+      
     }),
     overflowX: 'hidden',
     width: theme.spacing(7) + 1,
@@ -93,7 +101,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MiniDrawer() {
+export default function Navigation() {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -110,15 +118,17 @@ export default function MiniDrawer() {
     <div className={classes.root}>
       <CssBaseline />
       <AppBar
-        style={{ background: '#457b9d'}}
         position="fixed"
         color="secondary"
+        style={{ background: "linear-gradient(#000428, #004e92)", color: "white", opacity: '0.95'}}
         className={clsx(classes.appBar, {
           [classes.appBarShift]: open,
         })}
       >
-        <Toolbar>
+        <Toolbar
+        >
           <IconButton
+          style={{color:"green"}}
             color="inherit"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
@@ -127,7 +137,7 @@ export default function MiniDrawer() {
               [classes.hide]: open,
             })}
           >
-            <MenuIcon />
+            <MenuIcon style={{color: 'white' }} />
           </IconButton>
           <Typography 
           variant="h6" 
@@ -138,7 +148,6 @@ export default function MiniDrawer() {
         </Toolbar>
       </AppBar>
       <Drawer
-      
         variant="permanent"
         className={clsx(classes.drawer, {
           [classes.drawerOpen]: open,
@@ -152,39 +161,39 @@ export default function MiniDrawer() {
         }}
       >
         <div className={classes.toolbar}>
-          <IconButton onClick={handleDrawerClose}>
+          <IconButton 
+          onClick={handleDrawerClose}>
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
           </IconButton>
         </div>
         <Divider />
         <List>
-            <ListItem button >
-            <Link exact to="/" style={{textDecoration: 'none', display:'flex', color:'black'}}>
+        <Link exact to="/" style={{textDecoration: 'none', display:'flex', color:'black'}}>
+            <ListItem button  style={{height:"80px"}}>
               <ListItemIcon><HomeIcon /></ListItemIcon>
               <ListItemText>Strona Główna</ListItemText>
-              </Link>
             </ListItem>
+            </Link>
             
-            <ListItem button>
             <Link to="/products" style={{textDecoration: 'none', display:'flex', color:'black'}}>
+            <ListItem button style={{height:"80px"}}>
               <ListItemIcon><SearchIcon /></ListItemIcon>
               <ListItemText>Produkty</ListItemText>
-              </Link>
             </ListItem>
+            </Link>
 
-            <ListItem button>
             <Link to="/cart" style={{textDecoration: 'none', display:'flex', color:'black'}}>
+            <ListItem button style={{height:"80px"}}>
               <ListItemIcon><ShoppingCartIcon /></ListItemIcon>
               <ListItemText>Koszyk</ListItemText>
-              </Link>
             </ListItem>
-
-            <ListItem button>
+            </Link>
             <Link to="/cart" style={{textDecoration: 'none', display:'flex', color:'black'}}>
+            <ListItem button style={{height:"80px"}}>
               <ListItemIcon><ContactMailIcon /></ListItemIcon>
               <ListItemText>Dodaj produkt</ListItemText>
-              </Link>
             </ListItem>
+            </Link>
             
 
         </List>
