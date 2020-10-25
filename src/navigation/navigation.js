@@ -20,13 +20,7 @@ import HomeIcon from '@material-ui/icons/Home';
 import SearchIcon from '@material-ui/icons/Search';
 import ContactMailIcon from '@material-ui/icons/ContactMail';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import Dashboard from '../dashboard/dashboard';
-import {Route, Switch, Link, } from "react-router-dom";
-import Cart from '../cart/cart';
-import Cards from '../products/productCards/Cards';
-
-
-
+import {Link} from 'react-router-dom'
 const drawerWidth = 220;
 
 const styles = {
@@ -194,31 +188,8 @@ export default function Navigation() {
               <ListItemText>Dodaj produkt</ListItemText>
             </ListItem>
             </Link>
-            
-
         </List>
-        
       </Drawer>
-      <main className={classes.content} style={{margin:'0', padding:'0'}}>
-        <div className={classes.toolbar} />
-        <Typography paragraph >
-        
-          <Switch>
-            <Route exact path="/">
-              <Dashboard/>
-             </Route>
-             <Route path="/products">
-              <Cards/>
-             </Route>
-             <Route path="/cart">
-              <Cart/>
-             </Route>
-             <Route path="/form">
-              
-             </Route>
-           </Switch>
-        </Typography>
-      </main>
     </div>
   );
 }
