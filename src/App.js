@@ -1,11 +1,11 @@
 import React from 'react';
-import MiniDrawer from './navigation/navigation'
+import Navigation from './navigation/navigation'
 
 
 function App() {
 
   return (
-    <MiniDrawer/>
+    <Navigation/>
   );
 }
 
