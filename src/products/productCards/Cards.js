@@ -6,7 +6,7 @@ import '../products.css';
 class Cards extends React.Component {
     state = {
         products: products,
-        productsInCart: []
+        productsInCart: JSON.parse(localStorage["productsID"])
     }
 
       handleAddToCart = (passedProduct) => {
