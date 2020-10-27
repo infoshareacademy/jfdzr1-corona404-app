@@ -19,6 +19,10 @@ class Cards extends React.Component {
           }
       }
 
+      componentDidUpdate() {
+          localStorage['productsID'] = JSON.stringify(this.state.productsInCart)
+      }
+
     render() {
         return <div className="sectionLayout">
 
