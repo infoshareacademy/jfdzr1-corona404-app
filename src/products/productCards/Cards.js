@@ -4,9 +4,22 @@ import { products } from '../products';
 import '../products.css';
 
 class Cards extends React.Component {
+
     state = {
         products: products,
-        productsInCart: JSON.parse(localStorage["productsID"])
+        productsInCart: []
+    }
+
+    componentDidMount() {
+        if(localStorage.getItem("productsID") == true){
+            this.setState({
+                productsInCart: JSON.parse(localStorage["productsID"])
+            })
+        }
+    }
+
+    componentDidUpdate() {
+        localStorage['productsID'] = JSON.stringify(this.state.productsInCart)
     }
 
       handleAddToCart = (passedProduct) => {
@@ -17,10 +30,6 @@ class Cards extends React.Component {
                 productsInCart: [...this.state.productsInCart, passedProduct.id]
               })
           }
-      }
-
-      componentDidUpdate() {
-          localStorage['productsID'] = JSON.stringify(this.state.productsInCart)
       }
 
     render() {
