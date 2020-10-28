@@ -32,6 +32,7 @@ class Cart extends React.Component {
     let productsID = JSON.parse(localStorage["productsID"]);
     let fetchedList = [];
     let productsToRender = [];
+    let sumPrice = 0;
 
     await fetch('product-list.json')
       .then(res => res.json())
@@ -41,21 +42,21 @@ class Cart extends React.Component {
 
     productsID.forEach((id) => {
       fetchedList.forEach((prod) => {
-        if (prod.id == id) {
+        if (prod.id === id) {
           productsToRender.push(prod)
         }
       })
     })
 
-    this.setState({
-      products: productsToRender,
-      totalPrice: this.state.totalPrice.toFixed(2)
+    productsToRender.forEach((prod) => {
+      sumPrice += prod.price.value * prod.price.amount
     })
 
-    this.state.products.forEach((prod) => {
-      this.state.totalPrice += prod.price.value * prod.price.amount
+    this.setState({
+      products: productsToRender,
+      totalPrice: sumPrice.toFixed(2)
     })
-    
+
   }
 
   handleOnChange = (event, product) => {
