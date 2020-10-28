@@ -11,7 +11,8 @@ class Cards extends React.Component {
     }
 
     componentDidMount() {
-        if(localStorage.getItem("productsID") == true){
+        if(localStorage.getItem("productsID") !== null){
+
             this.setState({
                 productsInCart: JSON.parse(localStorage["productsID"])
             })
