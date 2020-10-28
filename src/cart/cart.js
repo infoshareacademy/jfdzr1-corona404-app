@@ -12,6 +12,7 @@ class Cart extends React.Component {
   }
 
   handleOnDelete = (productId) => {
+    let localStorageIDList = JSON.parse(localStorage["productsID"]);
     let newTotalPrice = 0;
 
     let filteredArray = this.state.products.filter((product) => {
@@ -26,6 +27,11 @@ class Cart extends React.Component {
       products: filteredArray,
       totalPrice: newTotalPrice.toFixed(2)
     })
+
+    const updatedIDlist = localStorageIDList.filter(prod => prod !== productId)
+
+    localStorage["productsID"] = JSON.stringify(updatedIDlist)
+
   }
 
   async componentDidMount() {
