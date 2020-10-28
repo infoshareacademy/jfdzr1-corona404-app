@@ -74,7 +74,7 @@ class Summary extends React.Component {
                     handleOnSubmit={this.handleOnSubmit}
                 />
                 <div>
-                    {this.state.open == true &&
+                    {this.state.open === true &&
                         <DiscountPopup open={this.state.open}></DiscountPopup>}
                 </div>
             </>

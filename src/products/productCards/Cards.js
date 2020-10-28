@@ -1,5 +1,7 @@
 import React from 'react';
 import ProductCard from './ProductCard';
+import AddedPopup from './AddedPopup';
+import AlreadyAddedPopup from './AlreadyAddedPopup';
 import { products } from '../products';
 import '../products.css';
 
@@ -7,7 +9,9 @@ class Cards extends React.Component {
 
     state = {
         products: products,
-        productsInCart: []
+        productsInCart: [],
+        openAddedPopup: false,
+        openAlreadyAddedPopup: false,
     }
 
     componentDidMount() {
@@ -25,11 +29,26 @@ class Cards extends React.Component {
 
       handleAddToCart = (passedProduct) => {
           if(this.state.productsInCart.find((product) => product === passedProduct.id)){
-              console.log('Ten produkt już został dodany do koszyka')
+              this.setState({
+                  openAlreadyAddedPopup: true,
+              })
+
+              setTimeout(() => {
+                this.setState({
+                    openAlreadyAddedPopup: false,
+                })
+               }, 2000);
           }else{
             this.setState({
-                productsInCart: [...this.state.productsInCart, passedProduct.id]
+                productsInCart: [...this.state.productsInCart, passedProduct.id],
+                openAddedPopup: true,
               })
+
+              setTimeout(() => {
+                this.setState({
+                    openAddedPopup: false,
+                })
+               }, 2000);
           }
       }
 
@@ -43,7 +62,14 @@ class Cards extends React.Component {
                     </div>
                 ))
             }
-
+                 <div>
+                    {this.state.openAddedPopup === true &&
+                        <AddedPopup open={this.state.openAddedPopup}></AddedPopup>}
+                </div>
+                <div>
+                    {this.state.openAlreadyAddedPopup === true &&
+                        <AlreadyAddedPopup open={this.state.openAlreadyAddedPopup}></AlreadyAddedPopup>}
+                </div>
         </div>
     }
 }
