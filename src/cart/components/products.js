@@ -33,7 +33,7 @@ class Products extends React.Component {
                                 <div className="product__rightbox">
                                     <Select defaultValue={1}
                                         style={{ width: '50%' }}
-                                        onChange={(event) => this.props.handleOnChange(event, product)}>
+                                        onChange={(event) => this.props.handleOnAmountChange(event, product)}>
                                         <MenuItem value={1}>1</MenuItem>
                                         <MenuItem value={2}>2</MenuItem>
                                         <MenuItem value={3}>3</MenuItem>

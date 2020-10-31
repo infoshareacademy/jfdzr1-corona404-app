@@ -32,25 +32,7 @@ class Cart extends React.Component {
 
     localStorage["productsID"] = JSON.stringify(updatedIDlist)
 
-    // Send Price Count on Product Delete // 
-
-    if(this.state.products.length > 0){
-      let productsArray = this.state.products;
-      productsArray.sort(function(a,b) {
-        return b.delivery[0].price - a.delivery[0].price
-      })
-
-      let sendPriceToSet = productsArray[0].delivery[0].price;
-      
-    this.setState({
-      sendPrice: sendPriceToSet
-    })
-    }else{
-      this.setState({
-        sendPrice: 0
-      })
-    }
-
+    this.handleCountSendPrice();
   }
 
   async componentDidMount() {
@@ -86,21 +68,25 @@ class Cart extends React.Component {
   }
 
   handleCountSendPrice = () => {
-    if(this.state.products.length > 0){
+    if (this.state.products.length > 0) {
       let productsArray = this.state.products;
-      productsArray.sort(function(a,b) {
+      productsArray.sort(function (a, b) {
         return b.delivery[0].price - a.delivery[0].price
       })
 
       let sendPriceToSet = productsArray[0].delivery[0].price;
-      
-    this.setState({
-      sendPrice: sendPriceToSet
-    })
+
+      this.setState({
+        sendPrice: sendPriceToSet
+      })
+    } else {
+      this.setState({
+        sendPrice: 0
+      })
     }
   }
 
-  handleOnChange = (event, product) => {
+  handleOnAmountChange = (event, product) => {
     let productIndex = this.state.products.map(function (e) { return e.id; }).indexOf(product.id);
     const productList = this.state.products
     productList[productIndex].price.amount = event.target.value
@@ -116,24 +102,29 @@ class Cart extends React.Component {
   }
 
   render() {
+    const productsAmount = this.state.products.length;
     return (
       <section className="cart__body">
-        <h1 className="cart__title">Twój Koszyk</h1>
-        <div className="cart__container">
-          <div className="product__list">
-            <Products
-              products={this.state.products}
-              handleOnDelete={this.handleOnDelete}
-              handleOnChange={this.handleOnChange}
-            />
+        {productsAmount > 0 && <>
+          <h1 className="cart__title">Twój Koszyk</h1>
+          <div className="cart__container">
+            <div className="product__list">
+              <Products
+                products={this.state.products}
+                handleOnDelete={this.handleOnDelete}
+                handleOnAmountChange={this.handleOnAmountChange}/>
+            </div>
+            <div className="summary">
+              <Summary
+                totalPrice={this.state.totalPrice}
+                sendPrice={this.state.sendPrice}/>
+            </div>
           </div>
-          <div className="summary">
-            <Summary
-              totalPrice={this.state.totalPrice}
-              sendPrice={this.state.sendPrice}
-            />
-          </div>
-        </div>
+        </>
+        }
+        {productsAmount === 0 &&
+          <h1 className="cart__title">Brak produktów <br/> w koszyku ...</h1>
+        }
       </section>
     )
   }
