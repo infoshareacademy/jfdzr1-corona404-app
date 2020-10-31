@@ -68,7 +68,7 @@ export const products = [
     "origin": "Pomorskie",
     "delivery": [{
       "company": "DHL",
-      "price": 10,
+      "price": 50,
       "unitlimit": false
     }]
   },
@@ -194,7 +194,7 @@ export const products = [
     "origin": "Małopolskie",
     "delivery": [{
       "company": "DHL",
-      "price": 10,
+      "price": 100,
       "unitlimit": false
     }]
   },

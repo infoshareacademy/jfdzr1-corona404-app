@@ -8,7 +8,7 @@ class Cart extends React.Component {
   state = {
     products: [],
     totalPrice: 0,
-    sendPrice: 25,
+    sendPrice: 0,
   }
 
   handleOnDelete = (productId) => {
@@ -31,6 +31,25 @@ class Cart extends React.Component {
     const updatedIDlist = localStorageIDList.filter(prod => prod !== productId)
 
     localStorage["productsID"] = JSON.stringify(updatedIDlist)
+
+    // Send Price Count on Product Delete // 
+
+    if(this.state.products.length > 0){
+      let productsArray = this.state.products;
+      productsArray.sort(function(a,b) {
+        return b.delivery[0].price - a.delivery[0].price
+      })
+
+      let sendPriceToSet = productsArray[0].delivery[0].price;
+      
+    this.setState({
+      sendPrice: sendPriceToSet
+    })
+    }else{
+      this.setState({
+        sendPrice: 0
+      })
+    }
 
   }
 
@@ -63,6 +82,22 @@ class Cart extends React.Component {
       totalPrice: sumPrice.toFixed(2)
     })
 
+    this.handleCountSendPrice()
+  }
+
+  handleCountSendPrice = () => {
+    if(this.state.products.length > 0){
+      let productsArray = this.state.products;
+      productsArray.sort(function(a,b) {
+        return b.delivery[0].price - a.delivery[0].price
+      })
+
+      let sendPriceToSet = productsArray[0].delivery[0].price;
+      
+    this.setState({
+      sendPrice: sendPriceToSet
+    })
+    }
   }
 
   handleOnChange = (event, product) => {

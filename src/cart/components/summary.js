@@ -25,7 +25,6 @@ const StyledButton = withStyles({
 class Summary extends React.Component {
 
     state = {
-        sendPrice: 25,
         discountCode: '',
         open: false
     }
@@ -62,7 +61,7 @@ class Summary extends React.Component {
                     <div>
                         <Typography variant="h7">Wysyłka :
                         <span style={{ fontWeight: "800", float: 'right' }}>
-                                {this.state.discountCode === "CORONA" ? "Gratis" : this.state.sendPrice + " zł"}</span>
+                                {this.state.discountCode === "CORONA" ? "Gratis" : this.props.sendPrice + " zł"}</span>
                         </Typography>
                     </div>
                     <div style={{ textAlign: 'center', marginTop: '50px' }}>

@@ -17,7 +17,7 @@ class ProductCard extends React.Component {
               {this.props.product.name}
             </p>
             <div className="img_container">
-              <img src={this.props.product.image} className="img_wrapper" />
+              <img src={this.props.product.image} className="img_wrapper" alt="product-img"/>
             </div>
           </CardContent>
           <CardActions className="cardActions">
