@@ -24,6 +24,7 @@ import Dashboard from '../dashboard/dashboard';
 import {Route, Switch, Link, } from "react-router-dom";
 import Cart from '../cart/cart';
 import Cards from '../products/productCards/Cards';
+import Form from '../form/Form';
 
 
 
@@ -180,7 +181,7 @@ export default function MiniDrawer() {
             </ListItem>
 
             <ListItem button>
-            <Link to="/cart" style={{textDecoration: 'none', display:'flex', color:'black'}}>
+            <Link to="/form" style={{textDecoration: 'none', display:'flex', color:'black'}}>
               <ListItemIcon><ContactMailIcon /></ListItemIcon>
               <ListItemText>Dodaj produkt</ListItemText>
               </Link>
@@ -205,7 +206,7 @@ export default function MiniDrawer() {
               <Cart/>
              </Route>
              <Route path="/form">
-              
+              <Form/>
              </Route>
            </Switch>
         </Typography>
