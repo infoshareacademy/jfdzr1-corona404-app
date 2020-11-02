@@ -133,7 +133,7 @@ export default function MiniDrawer() {
           variant="h6" 
           noWrap>
   
-            Tylko Polska jakość!
+            Sklep 404 - Tylko Polska jakość!
           </Typography>
         </Toolbar>
       </AppBar>
@@ -159,30 +159,30 @@ export default function MiniDrawer() {
         <Divider />
         <List>
             <ListItem button >
-            <Link to="/dashboard" style={{textDecoration: 'none', display:'flex', color:'black'}}>
+            <Link exact to="/" style={{textDecoration: 'none', display:'flex', color:'black'}}>
               <ListItemIcon><HomeIcon /></ListItemIcon>
-              <ListItemText>Dashboard</ListItemText>
+              <ListItemText>Strona Główna</ListItemText>
               </Link>
             </ListItem>
             
             <ListItem button>
             <Link to="/products" style={{textDecoration: 'none', display:'flex', color:'black'}}>
               <ListItemIcon><SearchIcon /></ListItemIcon>
-              <ListItemText>Products</ListItemText>
+              <ListItemText>Produkty</ListItemText>
               </Link>
             </ListItem>
 
             <ListItem button>
             <Link to="/cart" style={{textDecoration: 'none', display:'flex', color:'black'}}>
               <ListItemIcon><ShoppingCartIcon /></ListItemIcon>
-              <ListItemText>Cart</ListItemText>
+              <ListItemText>Koszyk</ListItemText>
               </Link>
             </ListItem>
 
             <ListItem button>
             <Link to="/cart" style={{textDecoration: 'none', display:'flex', color:'black'}}>
               <ListItemIcon><ContactMailIcon /></ListItemIcon>
-              <ListItemText>Form</ListItemText>
+              <ListItemText>Dodaj produkt</ListItemText>
               </Link>
             </ListItem>
             
@@ -198,11 +198,6 @@ export default function MiniDrawer() {
             <Route exact path="/">
               <Dashboard/>
              </Route>
-             
-             <Route path="/dashboard">
-             <Dashboard/>
-             </Route>
-
              <Route path="/products">
               <Cards/>
              </Route>

@@ -2,6 +2,7 @@ import React from 'react';
 import './cart.css';
 import Products from './components/products';
 import Summary from './components/summary';
+import Typography from '@material-ui/core/Typography'
 
 class Cart extends React.Component {
 
@@ -109,6 +110,7 @@ class Cart extends React.Component {
   render() {
     return (
       <section className="cart__body">
+        <h1 className="cart__title">Twój Koszyk</h1>
         <div className="cart__container">
           <div className="product__list">
             <Products
