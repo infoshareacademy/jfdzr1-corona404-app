@@ -2,6 +2,8 @@ import React from 'react';
 import './cart.css';
 import Products from './components/products';
 import Summary from './components/summary';
+import EmptyBoxSVG from './components/images/empty.svg';
+import ShoppingSVG from './components/images/shopping.svg';
 
 class Cart extends React.Component {
 
@@ -107,6 +109,7 @@ class Cart extends React.Component {
       <section className="cart__body">
         {productsAmount > 0 && <>
           <h1 className="cart__title">Twój Koszyk</h1>
+          <img src={ShoppingSVG} alt='shoppingsvg' className='shoppingSVG'/>
           <div className="cart__container">
             <div className="product__list">
               <Products
@@ -123,7 +126,10 @@ class Cart extends React.Component {
         </>
         }
         {productsAmount === 0 &&
+        <>
           <h1 className="cart__title">Brak produktów <br/> w koszyku ...</h1>
+          <img src={EmptyBoxSVG} alt='emptybox' className='cartSVG'></img>
+        </>
         }
       </section>
     )
