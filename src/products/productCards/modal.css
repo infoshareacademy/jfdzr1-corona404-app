@@ -128,7 +128,7 @@ button {
 @media (min-width: 769px) and (max-width: 1024px) {
   .modal_wrapper {
     width: 70%;
-    height: 70%;
+    height: 80%;
   }
   .modal_content {
     max-width: 90%;
@@ -153,8 +153,8 @@ button {
 }
 @media (min-width: 1025px) and (max-width: 1920px) {
   .modal_wrapper {
-    width: 50%;
-    height: 70%;
+    width: 60%;
+    height: 88%;
   }
   .modal_content {
     max-width: 80%;
