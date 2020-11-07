@@ -5,10 +5,28 @@ import Button from "@material-ui/core/Button";
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import '../products.css';
+import ProductModal from './ProdctModal';
 
 class ProductCard extends React.Component {
 
+  state = {
+    setOpen: false
+  }
+
+   handleOpen = () => {
+    this.setState({
+      setOpen: true
+  })
+  };
+
+  handleClose = () => {
+    this.setState({
+      setOpen: false
+  })
+  };
+
   render() {
+    
     return (
       <div>
         <Card className="productContainer">
@@ -16,8 +34,8 @@ class ProductCard extends React.Component {
             <p className="title">
               {this.props.product.name}
             </p>
-            <div className="img_container">
-              <img src={this.props.product.image} className="img_wrapper" alt="product-img"/>
+            <div className="img_container" >
+              <img src={this.props.product.image} className="img_wrapper" alt="product-img" onClick={this.handleOpen}/>
             </div>
           </CardContent>
           <CardActions className="cardActions">
@@ -28,7 +46,9 @@ class ProductCard extends React.Component {
               <ShoppingCartIcon style={{ fontSize: '1.75rem' }} />
             </Button>
           </CardActions>
-        </Card>
+         </Card>
+        <ProductModal product={this.props.product} open={this.state.setOpen} close={this.handleClose} />
+        
       </div>
     )
   }
