@@ -38,7 +38,13 @@ class Cart extends React.Component {
   }
 
   async componentDidMount() {
-    let productsID = JSON.parse(localStorage["productsID"]);
+    let productsID;
+    if(localStorage.getItem("productsID") === null){
+      productsID = []
+    }else{
+      productsID = JSON.parse(localStorage["productsID"]);
+    }
+
     let fetchedList = [];
     let productsToRender = [];
     let sumPrice = 0;
@@ -109,27 +115,27 @@ class Cart extends React.Component {
       <section className="cart__body">
         {productsAmount > 0 && <>
           <h1 className="cart__title">Twój Koszyk</h1>
-          <img src={ShoppingSVG} alt='shoppingsvg' className='shoppingSVG'/>
+          <img src={ShoppingSVG} alt='shoppingsvg' className='shoppingSVG' />
           <div className="cart__container">
             <div className="product__list">
               <Products
                 products={this.state.products}
                 handleOnDelete={this.handleOnDelete}
-                handleOnAmountChange={this.handleOnAmountChange}/>
+                handleOnAmountChange={this.handleOnAmountChange} />
             </div>
             <div className="summary">
               <Summary
                 totalPrice={this.state.totalPrice}
-                sendPrice={this.state.sendPrice}/>
+                sendPrice={this.state.sendPrice} />
             </div>
           </div>
         </>
         }
         {productsAmount === 0 &&
-        <>
-          <h1 className="cart__title">Brak produktów <br/> w koszyku ...</h1>
-          <img src={EmptyBoxSVG} alt='emptybox' className='cartSVG'></img>
-        </>
+          <>
+            <h1 className="cart__title">Brak produktów <br /> w koszyku ...</h1>
+            <img src={EmptyBoxSVG} alt='emptybox' className='cartSVG'></img>
+          </>
         }
       </section>
     )
