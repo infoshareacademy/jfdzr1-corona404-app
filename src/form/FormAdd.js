@@ -13,9 +13,9 @@ const FormAdd = ({ submitForm }) => {
     <div className='form-content-right'>
       <span className='close-btn'><a href="/" >x</a></span>
       <form onSubmit={handleSubmit} className='form' noValidate>
-        <h1>
+        <h2>
         Zacznij sprzedawać już teraz!
-        </h1>
+        </h2>
         <h2>
         Dodaj produkt 
         </h2>
