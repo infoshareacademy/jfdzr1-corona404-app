@@ -20,18 +20,14 @@ import HomeIcon from '@material-ui/icons/Home';
 import SearchIcon from '@material-ui/icons/Search';
 import ContactMailIcon from '@material-ui/icons/ContactMail';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import Dashboard from '../dashboard/dashboard';
-import {Route, Switch, Link, } from "react-router-dom";
-import Cart from '../cart/cart';
-import Cards from '../products/productCards/Cards';
-import Form from '../form/Form';
+import { Link, } from "react-router-dom";
 
 const drawerWidth = 220;
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width:'100%'
-    
+    width: '100%'
+
 
   },
   appBar: {
@@ -39,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
-      
+
     }),
   },
   appBarShift: {
@@ -66,14 +62,14 @@ const useStyles = makeStyles((theme) => ({
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
-     
+
     }),
   },
   drawerClose: {
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
-      
+
     }),
     overflowX: 'hidden',
     width: theme.spacing(7) + 1,
@@ -109,12 +105,12 @@ export default function Navigation() {
 
   return (
     <div className={classes.root}
-    style={{ paddingTop: 56 }}
+      style={{ paddingTop: 56 }}
     >
       <CssBaseline />
       <AppBar
         position="fixed"
-        style={{ background: "linear-gradient(162deg, rgba(69,123,157), rgba(168,218,220))", color: "white", opacity: '1'}}
+        style={{ background: "linear-gradient(162deg, rgba(69,123,157), rgba(168,218,220))", color: "white", opacity: '1' }}
         className={clsx(classes.appBar, {
           [classes.appBarShift]: open,
         })}
@@ -122,7 +118,7 @@ export default function Navigation() {
         <Toolbar
         >
           <IconButton
-          style={{color:"green"}}
+            style={{ color: "green" }}
             color="inherit"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
@@ -131,12 +127,12 @@ export default function Navigation() {
               [classes.hide]: open,
             })}
           >
-            <MenuIcon style={{color: 'white' }} />
+            <MenuIcon style={{ color: 'white' }} />
           </IconButton>
-          <Typography 
-          variant="h6" 
-          noWrap>
-  
+          <Typography
+            variant="h6"
+            noWrap>
+
             Sklep 404 - Tylko Polska jakość!
           </Typography>
         </Toolbar>
@@ -155,47 +151,45 @@ export default function Navigation() {
         }}
       >
         <div className={classes.toolbar}>
-          <IconButton 
-          onClick={handleDrawerClose}>
+          <IconButton
+            onClick={handleDrawerClose}>
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
           </IconButton>
         </div>
         <Divider />
         <List>
-        <Link exact to="/" style={{textDecoration: 'none', display:'flex', color:'black'}}>
-            <ListItem button  style={{height:"80px"}}>
+          <Link exact to="/" style={{ textDecoration: 'none', display: 'flex', color: 'black' }}>
+            <ListItem button style={{ height: "80px" }}>
               <ListItemIcon><HomeIcon /></ListItemIcon>
               <ListItemText>Strona Główna</ListItemText>
             </ListItem>
-            </Link>
-            
-            <Link to="/products" style={{textDecoration: 'none', display:'flex', color:'black'}}>
-            <ListItem button style={{height:"80px"}}>
+          </Link>
+
+          <Link to="/products" style={{ textDecoration: 'none', display: 'flex', color: 'black' }}>
+            <ListItem button style={{ height: "80px" }}>
               <ListItemIcon><SearchIcon /></ListItemIcon>
               <ListItemText>Produkty</ListItemText>
             </ListItem>
-            </Link>
+          </Link>
 
-            <Link to="/cart" style={{textDecoration: 'none', display:'flex', color:'black'}}>
-            <ListItem button style={{height:"80px"}}>
+          <Link to="/cart" style={{ textDecoration: 'none', display: 'flex', color: 'black' }}>
+            <ListItem button style={{ height: "80px" }}>
               <ListItemIcon><ShoppingCartIcon /></ListItemIcon>
               <ListItemText>Koszyk</ListItemText>
             </ListItem>
+          </Link>
 
-            </Link>
-            <Link to="/cart" style={{textDecoration: 'none', display:'flex', color:'black'}}>
-            <ListItem button style={{height:"80px"}}>
-            <ListItem button>
-            <Link to="/form" style={{textDecoration: 'none', display:'flex', color:'black'}}>
-
+          <Link to="/form" style={{ textDecoration: 'none', display: 'flex', color: 'black' }}>
+            <ListItem button style={{ height: "80px" }}>
               <ListItemIcon><ContactMailIcon /></ListItemIcon>
               <ListItemText>Dodaj produkt</ListItemText>
             </ListItem>
-            </Link>
+          </Link>
+
         </List>
       </Drawer>
 
-      <main className={classes.content} style={{margin:'0', padding:'0'}}>
+      {/* <main className={classes.content} style={{margin:'0', padding:'0'}}>
         <div className={classes.toolbar} />
         <Typography paragraph >
         
@@ -214,7 +208,7 @@ export default function Navigation() {
              </Route>
            </Switch>
         </Typography>
-      </main>
+      </main> */}
     </div>
   );
 }

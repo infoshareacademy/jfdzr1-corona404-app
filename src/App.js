@@ -4,6 +4,7 @@
          import Cards from './products/productCards/Cards'
          import {Switch, Route, BrowserRouter} from 'react-router-dom'
          import Navigation from './navigation/navigation'
+         import Form from './form/Form';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
       <Cart/>
      </Route>
      <Route path="/form">
+        <Form/>
      </Route>
    </Switch>
    </BrowserRouter>
