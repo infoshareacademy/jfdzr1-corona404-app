@@ -5,12 +5,13 @@
 }
 
 .sectionLayout {
+    max-width: 95vw;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
-    padding-top: 5rem;
-    padding-left: 5rem;
-    width: 98vw;
+    padding-top: 3rem;
+    padding-left: 6.5rem;
+    padding-right: 0.01rem;
     overflow: auto;
 }
 
@@ -21,11 +22,11 @@
 }
 
 .title {
-    letter-spacing: 0.10rem;
-    margin-top: 0.5rem;
+    letter-spacing: 0.05rem;
+    margin-top: 0.025rem;
     margin-bottom: 0.5rem;
-    font-weight: 450;
-    font-size: 1.5rem;
+    font-weight: 400;
+    font-size: 1.35rem;
     align-items: center;
     height: 50px;
 }
@@ -35,16 +36,24 @@
     justify-content: space-around;
     align-items: center;
     height: 50px;
-    display: flex-end;
 }
 
-.img_wrapper {
-    max-width: 300px;
+.cardActions-content {
+    display: flex;
+    align-items: center;
+}
+
+.price-field {
+    font-size: 1.15rem;
+}
+
+.img-wrapper {
+    max-width: 350px;
     max-height: 150px;
-    padding-top: 1.5%;
+    padding-top: 3.5%;
 }
 
-.img_container {
+.img-container {
     display: flex;
     align-content: center;
     justify-content: center;

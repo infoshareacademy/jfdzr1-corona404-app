@@ -33,16 +33,18 @@ class ProductCard extends React.Component {
             <p className="title">
               {this.props.product.name}
             </p>
-            <div className="img_container">
-              <img src={this.props.product.image} className="img_wrapper"/>
+            <div className="img-container">
+              <img src={this.props.product.image} className="img-wrapper"/>
             </div>
           </CardContent>
           <CardActions className="cardActions">
-            <div size='small'>
-              <AttachMoneyIcon style={{ fontSize: '1.75rem'}}/> {this.props.product.price.value}{' '}zł{'/'}{this.props.product.price.unit}
+            <div size='small' className="cardActions-content">
+              <AttachMoneyIcon style={{ fontSize: '1.75rem' }}/>
+              <div className="price-field"> {this.props.product.price.value}{' '}zł{'/'}{this.props.product.price.unit}
+              </div>
             </div>
             <Button size="small">
-              <ShoppingCartIcon style={{ fontSize: '1.75rem'}} onClick={this.handleBuyClick}/>
+              <ShoppingCartIcon style={{ fontSize: '1.75rem' }} onClick={this.handleBuyClick}/>
             </Button>
           </CardActions>
         </Card>
