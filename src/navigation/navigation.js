@@ -23,12 +23,6 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import {Link} from 'react-router-dom'
 const drawerWidth = 220;
 
-const styles = {
-  paper: {
-    backgroundColor: "blue"
-  }
-}
-
 const useStyles = makeStyles((theme) => ({
   root: {
     width:'100%'
@@ -115,7 +109,7 @@ export default function Navigation() {
       <CssBaseline />
       <AppBar
         position="fixed"
-        style={{ background: "linear-gradient(#000428, #004e92)", color: "white", opacity: '0.95'}}
+        style={{ background: "linear-gradient(162deg, rgba(69,123,157), rgba(168,218,220))", color: "white", opacity: '1'}}
         className={clsx(classes.appBar, {
           [classes.appBarShift]: open,
         })}
