@@ -12,7 +12,6 @@ class Dashboard extends React.Component{
 
     componentDidMount(){
         gsap.from(".shop_img",{opacity: 0, duration: 1 ,delay: .2});
-        
     }
 
     render(){;

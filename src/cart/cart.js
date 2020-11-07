@@ -2,71 +2,19 @@ import React from 'react';
 import './cart.css';
 import Products from './components/products';
 import Summary from './components/summary';
-import Typography from '@material-ui/core/Typography'
+import EmptyBoxSVG from './components/images/empty.svg';
+import ShoppingSVG from './components/images/shopping.svg';
 
 class Cart extends React.Component {
 
   state = {
-    products: [
-      {
-        "id": 2,
-        "name": "Bawełniana ECO Koszulka",
-        "category": "clothes",
-        "price": {
-          "value": 124.99,
-          "unit": "szt",
-          "amount": 1
-        },
-        "image": "https://1.allegroimg.com/s512/0320f0/3541c61d4c2cbdadea6c3720d821/Koszulka-bawelniana-T-shirt-ADLER-MALFINI-132-S",
-        "description": "Koszulka z ekologicznej bawełny",
-        "origin": "Pomorskie",
-        "delivery": [{
-          "company": "DHL",
-          "price": 20,
-          "unitlimit": false
-        }]
-      },
-      {
-        "id": 4,
-        "name": "Wełniany szal",
-        "category": "clothes",
-        "price": {
-          "value": 119.99,
-          "unit": "szt",
-          "amount": 1
-        },
-        "image": "https://cdn.shoplo.com/5412/products/th640/aaag/20-3c11a2dc56b112cddf7c2d53c4dd36f05d6d1074cfb136-22531055.jpg",
-        "description": "Ciepły szal z owczej wełny",
-        "origin": "Pomorskie",
-        "delivery": [{
-          "company": "DHL",
-          "price": 10,
-          "unitlimit": false
-        }]
-      },
-      {
-        "id": 5,
-        "name": "Maseczka ochronna 404",
-        "category": "others",
-        "price": {
-          "value": 4.04,
-          "unit": "szt",
-          "amount": 1
-        },
-        "image": "https://image.ceneostatic.pl/data/products/92754271/i-mitex-maseczka-ochronna-z-filtrem-czern.jpg",
-        "description": "Maseczka ochronna, chroniąca przed wirusami i bakteriami",
-        "origin": "Mazowieckie",
-        "delivery": [{
-          "company": "DHL",
-          "price": 5,
-          "unitlimit": false
-        }]
-      },],
+    products: [],
     totalPrice: 0,
-    sendPrice: 25,
+    sendPrice: 0,
   }
 
   handleOnDelete = (productId) => {
+    let localStorageIDList = JSON.parse(localStorage["productsID"]);
     let newTotalPrice = 0;
 
     let filteredArray = this.state.products.filter((product) => {
@@ -81,18 +29,72 @@ class Cart extends React.Component {
       products: filteredArray,
       totalPrice: newTotalPrice.toFixed(2)
     })
+
+    const updatedIDlist = localStorageIDList.filter(prod => prod !== productId)
+
+    localStorage["productsID"] = JSON.stringify(updatedIDlist)
+
+    this.handleCountSendPrice();
   }
 
-  componentDidMount() {
-    this.state.products.forEach((prod) => {
-      this.state.totalPrice += prod.price.value * prod.price.amount
+  async componentDidMount() {
+    let productsID;
+    if(localStorage.getItem("productsID") === null){
+      productsID = []
+    }else{
+      productsID = JSON.parse(localStorage["productsID"]);
+    }
+
+    let fetchedList = [];
+    let productsToRender = [];
+    let sumPrice = 0;
+
+    await fetch('product-list.json')
+      .then(res => res.json())
+      .then(data => {
+        fetchedList = data;
+      })
+
+    productsID.forEach((id) => {
+      fetchedList.forEach((prod) => {
+        if (prod.id === id) {
+          productsToRender.push(prod)
+        }
+      })
     })
+
+    productsToRender.forEach((prod) => {
+      sumPrice += prod.price.value * prod.price.amount
+    })
+
     this.setState({
-      totalPrice: this.state.totalPrice.toFixed(2)
+      products: productsToRender,
+      totalPrice: sumPrice.toFixed(2)
     })
+
+    this.handleCountSendPrice()
   }
 
-  handleOnChange = (event, product) => {
+  handleCountSendPrice = () => {
+    if (this.state.products.length > 0) {
+      let productsArray = this.state.products;
+      productsArray.sort(function (a, b) {
+        return b.delivery[0].price - a.delivery[0].price
+      })
+
+      let sendPriceToSet = productsArray[0].delivery[0].price;
+
+      this.setState({
+        sendPrice: sendPriceToSet
+      })
+    } else {
+      this.setState({
+        sendPrice: 0
+      })
+    }
+  }
+
+  handleOnAmountChange = (event, product) => {
     let productIndex = this.state.products.map(function (e) { return e.id; }).indexOf(product.id);
     const productList = this.state.products
     productList[productIndex].price.amount = event.target.value
@@ -108,24 +110,33 @@ class Cart extends React.Component {
   }
 
   render() {
+    const productsAmount = this.state.products.length;
     return (
       <section className="cart__body">
-        <h1 className="cart__title">Twój Koszyk</h1>
-        <div className="cart__container">
-          <div className="product__list">
-            <Products
-              products={this.state.products}
-              handleOnDelete={this.handleOnDelete}
-              handleOnChange={this.handleOnChange}
-            />
+        {productsAmount > 0 && <>
+          <h1 className="cart__title">Twój Koszyk</h1>
+          <img src={ShoppingSVG} alt='shoppingsvg' className='shoppingSVG' />
+          <div className="cart__container">
+            <div className="product__list">
+              <Products
+                products={this.state.products}
+                handleOnDelete={this.handleOnDelete}
+                handleOnAmountChange={this.handleOnAmountChange} />
+            </div>
+            <div className="summary">
+              <Summary
+                totalPrice={this.state.totalPrice}
+                sendPrice={this.state.sendPrice} />
+            </div>
           </div>
-          <div className="summary">
-            <Summary
-              totalPrice={this.state.totalPrice}
-              sendPrice={this.state.sendPrice}
-            />
-          </div>
-        </div>
+        </>
+        }
+        {productsAmount === 0 &&
+          <>
+            <h1 className="cart__title">Brak produktów <br /> w koszyku ...</h1>
+            <img src={EmptyBoxSVG} alt='emptybox' className='cartSVG'></img>
+          </>
+        }
       </section>
     )
   }
