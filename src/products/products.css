@@ -22,12 +22,14 @@
 }
 
 .title {
+    display: flex;
     letter-spacing: 0.05rem;
     margin-top: 0.025rem;
     margin-bottom: 0.5rem;
     font-weight: 400;
     font-size: 1.35rem;
     align-items: center;
+    justify-content: center;
     height: 50px;
 }
 

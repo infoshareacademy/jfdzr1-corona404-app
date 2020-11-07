@@ -1,30 +1,12 @@
 import React from 'react';
 import ProductCard from './ProductCard';
+import { products } from '../products';
 import '../products.css';
 
 class Cards extends React.Component {
-    // state = {
-    //     products: products
-    // }
-
-    products = fetch(process.env.PUBLIC_URL + '/product-list.json')
-    .then(r => r.json())
-    .then(products => {
-        this.setState({
-            products: products
-        })
-    });
-
-    
-    // componentDidMount() {
-    //     fetch('%PUBLIC_URL%/product-list.json')
-    //         .then(r => r.json())
-    //         .then(products => {
-    //             this.setState({
-    //                 products: products
-    //             })
-    //         })
-    // }
+    state = {
+        products: products
+    }
     
     render() {
         return <div className="sectionLayout">
