@@ -44,10 +44,10 @@
 }
 
 .shoppingSVG{
-    width: 30vw;
+    width: 32vw;
     position: absolute;
-    bottom: 10vh;
-    right: 6vw;
+    left: 65vw;
+    top: 45vh;
 }
 
 .product__list{
@@ -149,6 +149,10 @@
     .product__card{
         width: 55vw;
     }   
+
+    .shoppingSVG{
+        top: 60vh;
+    }
 }
 
 @media (max-width:1065px){
