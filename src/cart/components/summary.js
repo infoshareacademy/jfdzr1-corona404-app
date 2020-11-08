@@ -3,7 +3,8 @@ import { Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Discount from './discount';
-import DiscountPopup from './dicountPopup';
+import DiscountPopup from './discountPopup';
+import ErrorPopup from './errorPopup';
 
 const StyledButton = withStyles({
     root: {
@@ -26,7 +27,8 @@ class Summary extends React.Component {
 
     state = {
         discountCode: '',
-        open: false
+        succesPopup: false,
+        errorPopup: false,
     }
 
     handleOnSubmit = (event, passedDiscountCode) => {
@@ -37,13 +39,22 @@ class Summary extends React.Component {
 
         if (passedDiscountCode === "CORONA") {
             this.setState({
-                open: true
+                succesPopup: true,
+                errorPopup: false
             })
         } else {
             this.setState({
-                open: false
+                succesPopup: false,
+                errorPopup: true
             })
         }
+
+        setTimeout(() => {
+            this.setState({
+                errorPopup: false,
+                succesPopup: false
+            })
+        }, 1500);
     }
 
 
@@ -61,7 +72,7 @@ class Summary extends React.Component {
                     <div>
                         <Typography variant="h7">Wysyłka :
                         <span style={{ fontWeight: "800", float: 'right' }}>
-                                {this.state.discountCode === "CORONA" ? "Gratis" : this.props.sendPrice + " zł"}</span>
+                                {this.state.discountCode === "CORONA" ? "GRATIS" : this.props.sendPrice + " zł"}</span>
                         </Typography>
                     </div>
                     <div style={{ textAlign: 'center', marginTop: '50px' }}>
@@ -73,8 +84,10 @@ class Summary extends React.Component {
                     handleOnSubmit={this.handleOnSubmit}
                 />
                 <div>
-                    {this.state.open === true &&
-                        <DiscountPopup open={this.state.open}></DiscountPopup>}
+                    {this.state.succesPopup === true &&
+                        <DiscountPopup open={this.state.succesPopup}></DiscountPopup>}
+                        {this.state.errorPopup === true &&
+                        <ErrorPopup open={this.state.errorPopup}></ErrorPopup>}
                 </div>
             </>
         )

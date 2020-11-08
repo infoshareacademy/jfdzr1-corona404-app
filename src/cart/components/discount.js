@@ -18,11 +18,17 @@ class Discount extends React.Component {
         })
     }
 
-    handleChange = (event) =>{
+    handleChange = (event) => {
         this.setState({
             discountCode: event.target.value
         })
     }
+
+    // handleDiscountOnClick = () => {
+    //     this.setState({
+    //         discountCode: ''
+    //     })
+    // }   
 
 
     render() {
@@ -47,7 +53,7 @@ class Discount extends React.Component {
                         size="small"
                         style={{ margin: '5px 0 15px' }}
                         label="Kod Rabatowy" />
-                    <Button type="submit" variant="containd" color="default">Zrealizuj</Button>
+                    <Button onClick={this.handleDiscountOnClick} type="submit" variant="containd" color="default">Zrealizuj</Button>
                     </form>
                 </div>
             </div>
