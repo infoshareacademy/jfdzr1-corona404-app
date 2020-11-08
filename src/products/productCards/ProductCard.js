@@ -1,31 +1,32 @@
-import { CardActions, CardContent} from '@material-ui/core';
+import { CardActions, CardContent } from '@material-ui/core';
 import React from 'react';
 import Card from "@material-ui/core/Card";
 import Button from "@material-ui/core/Button";
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import '../products.css';
+import ProductModal from './ProdctModal';
 
 class ProductCard extends React.Component {
+
   state = {
-    productsToCart: []
+    setOpen: false
   }
 
-  handleBuyClick = (productToBuy) => {
+   handleOpen = () => {
     this.setState({
-      productsToCart: [...this.state.productToBuy]
-    })
-  }
+      setOpen: true
+  })
+  };
 
-  componentDidMount() {
-    this.shoppingList = JSON.parse(localStorage.getItem('shoppedItems'));
-  }
-
-  componentDidUpdate(nextProps, nextState) {
-    localStorage.setItem('product', JSON.stringify(nextState));
-  }
+  handleClose = () => {
+    this.setState({
+      setOpen: false
+  })
+  };
 
   render() {
+    
     return (
       <div>
         <Card className="productContainer">
@@ -33,6 +34,7 @@ class ProductCard extends React.Component {
             <p className="title">
               {this.props.product.name}
             </p>
+
             <div className="img-container">
               <img src={this.props.product.image} className="img-wrapper"/>
             </div>
@@ -45,9 +47,12 @@ class ProductCard extends React.Component {
             </div>
             <Button size="small">
               <ShoppingCartIcon style={{ fontSize: '1.75rem' }} onClick={this.handleBuyClick}/>
+
             </Button>
           </CardActions>
-        </Card>
+         </Card>
+        <ProductModal product={this.props.product} open={this.state.setOpen} close={this.handleClose} />
+        
       </div>
     )
   }

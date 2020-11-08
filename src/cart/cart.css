@@ -6,10 +6,10 @@
 
 .cart__body{
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
     display: block;
     overflow: auto;
-    background-image: linear-gradient(150deg, #e6e4e4 0%, #b2dddf 81%);
+    background-image: linear-gradient(150deg, #ffffff 0%, #aed4d6 81%);
 }
 
 .cart__title{
@@ -19,6 +19,7 @@
     font-size: clamp(30px, 5vw, 65px);
     font-weight: 800;
     letter-spacing: 2px;
+    text-align: center;
     background: linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%);
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -27,7 +28,7 @@
 .cart__container{
     position: relative;
     max-width: 1200px;
-    margin: 40px auto;
+    margin: 40px auto 0;
     transform: translateY(10vh);
     padding: 40px;
     display: grid;
@@ -35,6 +36,18 @@
     "list list summary"
     "list list discount"
     "info info info";
+}
+
+.cartSVG{
+    width: 40vw;
+    margin:20vh 30vw;
+}
+
+.shoppingSVG{
+    width: 30vw;
+    position: absolute;
+    bottom: 10vh;
+    right: 6vw;
 }
 
 .product__list{
@@ -62,6 +75,7 @@
     padding: 20px;
     display: flex;
     flex-direction: column;
+    border-radius: 10px;
     box-shadow: -9px 11px 25px -5px rgba(51, 51, 51, 0.493);
 }
 
@@ -78,6 +92,7 @@
     height: 170px;
     margin-left: -20px;
     background-color: #fff;
+    border-radius: 10px;
     box-shadow: -9px 11px 25px -5px rgba(51, 51, 51, 0.493);
 }
 
@@ -85,6 +100,7 @@
     display: block;
     width: 100%;
     background-color: rgb(255, 255, 255);
+    border-radius: 15px;
     padding: 20px;
     margin:10px 0;
     display: flex;
@@ -167,6 +183,15 @@
         "info info";
     }
 
+    .cartSVG{
+        width: 60vw;
+        margin: 20vh 15vw;
+    }
+
+    .shoppingSVG{
+        display: none;
+    }
+
     .product__list{
         margin-top: 120px;
     }
@@ -200,13 +225,16 @@
         top: 80px;
         right: 8vw;
         background-color: #fff;
+        box-shadow: none;
     }
 }
 
 @media (max-width:600px){
     .cart__container{
         zoom: 0.7;
-        max-width: 100vw;
+        width: 50%;
+        position: absolute;
+        left: 30vw;
     }
 
     .cart__title{   
