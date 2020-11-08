@@ -30,7 +30,7 @@ export default class DiscountPopup extends React.Component {
             <Snackbar anchorOrigin={{
                 vertical: 'center',
                 horizontal: 'center',
-              }} open={this.state.open} autoHideDuration={2000} onClose={this.handleClose}>
+              }} open={this.state.open} autoHideDuration={3000} onClose={this.handleClose}>
                 <Alert onClose={this.handleClose} severity="success">
                     Kod rabatowy przyjęty!
                 </Alert>

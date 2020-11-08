@@ -15,7 +15,7 @@ const StyledButton = withStyles({
         color: 'white',
         height: 40,
         padding: '0 20px',
-        transform:'translateY(-10px)',
+        transform: 'translateY(-10px)',
         boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
     },
     label: {
@@ -29,6 +29,7 @@ class Summary extends React.Component {
         discountCode: '',
         succesPopup: false,
         errorPopup: false,
+        discountAccepted: false
     }
 
     handleOnSubmit = (event, passedDiscountCode) => {
@@ -40,7 +41,8 @@ class Summary extends React.Component {
         if (passedDiscountCode === "CORONA") {
             this.setState({
                 succesPopup: true,
-                errorPopup: false
+                errorPopup: false,
+                discountAccepted: true
             })
         } else {
             this.setState({
@@ -82,11 +84,12 @@ class Summary extends React.Component {
                 <Discount
                     sendPrice={this.state.sendPrice}
                     handleOnSubmit={this.handleOnSubmit}
+                    discountAccepted={this.state.discountAccepted}
                 />
                 <div>
                     {this.state.succesPopup === true &&
                         <DiscountPopup open={this.state.succesPopup}></DiscountPopup>}
-                        {this.state.errorPopup === true &&
+                    {this.state.errorPopup === true &&
                         <ErrorPopup open={this.state.errorPopup}></ErrorPopup>}
                 </div>
             </>
