@@ -1,10 +1,13 @@
 import React from 'react';
 import './modal.css';
 import Modal from '@material-ui/core/Modal';
-import Typography from '@material-ui/core/Typography';
 import Card from "@material-ui/core/Card";
+import { CardActions, CardContent } from '@material-ui/core';
+import Button from "@material-ui/core/Button";
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 
-import { CardActions, CardContent} from '@material-ui/core';
+
 
 
 class ProductModal extends React.Component {
@@ -35,8 +38,17 @@ const body = (
             </p>
 
           </CardContent>
+          <CardActions className="cardActions">
+            <div size='small'>
+              <AttachMoneyIcon style={{ fontSize: '1.75rem' }} /> {this.props.product.price.value}{' '}zł{'/'}{this.props.product.price.unit}
+            </div>
+            <Button size="small" >
+              <ShoppingCartIcon style={{ fontSize: '1.75rem' }} />
+            </Button>
+          </CardActions>
+         </Card>
          
-      </Card>
+      
     </div>
    
   );
