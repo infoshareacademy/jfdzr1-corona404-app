@@ -112,6 +112,13 @@
     margin: 5px;
 }
 
+.rating{
+    width: 173px;
+    position: relative;
+    left: 32.8vw;
+    bottom: 5vh;
+}
+
 @media (max-width:1500px){
     .main_container{
         padding: 20px 10vw;

@@ -2,7 +2,8 @@ import React from 'react';
 import './dashboard.css';
 import Rating from '@material-ui/lab/Rating';
 import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography'
+import Typography from '@material-ui/core/Typography';
+import RateUs from './Rating/Rating'
 
 function Comments() {
     const value = 5;

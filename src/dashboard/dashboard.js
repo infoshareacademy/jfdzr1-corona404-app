@@ -7,6 +7,7 @@ import shop from './images/money.svg';
 import Comments from './comments';
 import Charts from './charts';
 import gsap from 'gsap';
+import RateUs from './Rating/Rating'
 
 class Dashboard extends React.Component{
 
@@ -26,6 +27,7 @@ class Dashboard extends React.Component{
                 <Charts></Charts>
                 <Subtitle></Subtitle>
                 <Comments></Comments>
+                <RateUs />
             </section>
         )
     }
