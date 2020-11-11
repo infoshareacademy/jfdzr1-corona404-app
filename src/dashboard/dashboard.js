@@ -27,7 +27,7 @@ class Dashboard extends React.Component{
                 <Charts></Charts>
                 <Subtitle></Subtitle>
                 <Comments></Comments>
-                <RateUs />
+                {/* <RateUs /> */}
             </section>
         )
     }

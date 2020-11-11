@@ -9,6 +9,7 @@ function Comments() {
     const value = 5;
     return (
         <div className="comments__container">
+            <div className="comments">
             <div className="comment">
                 <Typography variant="h5">"Best shopping website i've ever used"</Typography>
                 <Typography variant="h6">John B.</Typography>
@@ -30,6 +31,8 @@ function Comments() {
                     <Rating name="read-only" value={value} readOnly />
                 </Box>
             </div>
+            </div>
+            <RateUs/>
         </div>
     )
 }
