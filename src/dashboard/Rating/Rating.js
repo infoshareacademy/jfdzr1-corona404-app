@@ -1,69 +1,103 @@
-import React from 'react';
+import React, { useEffect, useState }  from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { withStyles } from '@material-ui/core/styles';
 
+import Rating from '@material-ui/lab/Rating';
 
 const StyledButton = withStyles({
-    root: {
-      height: '40px',
-      background: '#db3b7b',
-      borderRadius: 10,
-      fontSize: 20,
-      lineHeight: 1.2,
-      border: 0,
-      opacity: .9,
-      color: 'white',
-      // boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-      textDecoration:'none'
-    },
-    label: {
-      textTransform: 'capitalize',
-    },
-  })(Button);
+  root: {
+    height: '40px',
+    background: '#db3b7b',
+    borderRadius: 10,
+    fontSize: 20,
+    lineHeight: 1.2,
+    border: 0,
+    opacity: .9,
+    color: 'white',
+    textDecoration: 'none'
+  },
+  label: {
+    textTransform: 'capitalize',
+  },
+})(Button);
 
 function RateUs() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState(0);
+  const [comment, setComment] = useState(null)
 
   const handleClickOpen = () => {
     setOpen(true);
   };
 
-  const handleClose = () => {
+  const handleClose= () => {
     setOpen(false);
   };
 
+  const handleAccept = () => {
+    console.log(value, comment)
+    handleClose();
+    setValue(0)
+    setComment(null)
+  };
+
+  const handleComment = (event) => {
+    setComment(event.target.value)
+  }
+
   return (
     <div className="rating">
-      <StyledButton variant="contained" color="secondary" onClick={handleClickOpen}>
-        Oceń Aplikację
+      <StyledButton
+        variant="contained"
+        color="secondary"
+        onClick={handleClickOpen}>
+        Dodaj opinię
       </StyledButton>
-      <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Oceń naszą Aplikację</DialogTitle>
+      <Dialog
+        className="rate-modal"
+        open={open}
+        maxWidth="xs"
+        fullWidth="true"
+        onClose={handleClose}
+        aria-labelledby="form-dialog-title">
+        <DialogTitle id="form-dialog-title">
+          Oceń naszą Aplikację
+            </DialogTitle>
         <DialogContent>
-          <DialogContentText>
-            Oceń naszą Aplikację
-          </DialogContentText>
+          <Rating
+            name="simple-controlled"
+            value={value}
+            size="large"
+            onChange={(event, newValue) => {
+              setValue(newValue);
+            }}
+          />
           <TextField
             autoFocus
             margin="dense"
             id="name"
-            label="Email Address"
+            label="Komentarz"
             type="text"
             fullWidth
+            inputProps={{
+              maxLength: 30,
+            }}
+            disableUnderline
+            value={comment}
+            onChange={handleComment}
           />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
-            Cancel
+            Anuluj
           </Button>
-          <Button onClick={handleClose} color="primary">
-            Subscribe
+          <Button onClick={handleAccept} color="primary">
+            Dodaj Opinię
           </Button>
         </DialogActions>
       </Dialog>

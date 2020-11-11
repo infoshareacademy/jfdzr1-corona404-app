@@ -106,6 +106,10 @@
     width: 260px;
 }
 
+.rate-modal{
+    text-align: center;
+}
+
 .comment__title{
     font-size: 24px;
     font-weight: 300;
