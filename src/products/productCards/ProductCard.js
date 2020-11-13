@@ -5,25 +5,24 @@ import Button from "@material-ui/core/Button";
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import '../products.css';
+import ProductModal from './ProdctModal';
 
 class ProductCard extends React.Component {
   state = {
-    productsToCart: []
+    setOpen: false
   }
 
-  handleBuyClick = (productToBuy) => {
+  handleOpen = () => {
     this.setState({
-      productsToCart: [...this.state.productToBuy]
-    })
-  }
+      setOpen: true
+  })
+  };
 
-  componentDidMount() {
-    this.shoppingList = JSON.parse(localStorage.getItem('shoppedItems'));
-  }
-
-  componentDidUpdate(nextProps, nextState) {
-    localStorage.setItem('product', JSON.stringify(nextState));
-  }
+  handleClose = () => {
+    this.setState({
+      setOpen: false
+  })
+  };
 
   render() {
     return (
@@ -34,7 +33,7 @@ class ProductCard extends React.Component {
               {this.props.product.name}
             </p>
             <div className="img-container">
-              <img src={this.props.product.image} className="img-wrapper"/>
+              <img src={this.props.product.image} className="img-wrapper" alt="product-img" onClick={this.handleOpen}/>
             </div>
           </CardContent>
           <CardActions className="cardActions">
@@ -43,11 +42,13 @@ class ProductCard extends React.Component {
               <div className="price-field"> {this.props.product.price.value}{' '}zł{'/'}{this.props.product.price.unit}
               </div>
             </div>
-            <Button size="small">
-              <ShoppingCartIcon style={{ fontSize: '1.75rem' }} onClick={this.handleBuyClick}/>
+            <Button size="small" onClick={() => this.props.handleAddToCart(this.props.product)} >
+              <ShoppingCartIcon style={{ fontSize: '1.75rem' }} />
             </Button>
           </CardActions>
         </Card>
+        <ProductModal product={this.props.product} open={this.state.setOpen} close={this.handleClose} />
+        
       </div>
     )
   }

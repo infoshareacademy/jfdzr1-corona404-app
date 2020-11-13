@@ -20,19 +20,14 @@ import HomeIcon from '@material-ui/icons/Home';
 import SearchIcon from '@material-ui/icons/Search';
 import ContactMailIcon from '@material-ui/icons/ContactMail';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import Dashboard from '../dashboard/dashboard';
-import {Route, Switch, Link, } from "react-router-dom";
-import Cart from '../cart/cart';
-import Cards from '../products/productCards/Cards';
-
-
+import { Link, } from "react-router-dom";
 
 const drawerWidth = 220;
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width:'100%'
-    
+    width: '100%'
+
 
   },
   appBar: {
@@ -40,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
-      
+
     }),
   },
   appBarShift: {
@@ -67,12 +62,14 @@ const useStyles = makeStyles((theme) => ({
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
+
     }),
   },
   drawerClose: {
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
+
     }),
     overflowX: 'hidden',
     width: theme.spacing(7) + 1,
@@ -93,7 +90,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MiniDrawer() {
+export default function Navigation() {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -107,18 +104,21 @@ export default function MiniDrawer() {
   };
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root}
+      style={{ paddingTop: 56 }}
+    >
       <CssBaseline />
       <AppBar
-        style={{ background: '#457b9d'}}
         position="fixed"
-        color="secondary"
+        style={{ background: "linear-gradient(162deg, rgba(69,123,157), rgba(168,218,220))", color: "white", opacity: '1' }}
         className={clsx(classes.appBar, {
           [classes.appBarShift]: open,
         })}
       >
-        <Toolbar>
+        <Toolbar
+        >
           <IconButton
+            style={{ color: "green" }}
             color="inherit"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
@@ -127,18 +127,17 @@ export default function MiniDrawer() {
               [classes.hide]: open,
             })}
           >
-            <MenuIcon />
+            <MenuIcon style={{ color: 'white' }} />
           </IconButton>
-          <Typography 
-          variant="h6" 
-          noWrap>
-  
+          <Typography
+            variant="h6"
+            noWrap>
+
             Sklep 404 - Tylko Polska jakość!
           </Typography>
         </Toolbar>
       </AppBar>
       <Drawer
-      
         variant="permanent"
         className={clsx(classes.drawer, {
           [classes.drawerOpen]: open,
@@ -152,45 +151,45 @@ export default function MiniDrawer() {
         }}
       >
         <div className={classes.toolbar}>
-          <IconButton onClick={handleDrawerClose}>
+          <IconButton
+            onClick={handleDrawerClose}>
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
           </IconButton>
         </div>
         <Divider />
         <List>
-            <ListItem button >
-            <Link exact to="/" style={{textDecoration: 'none', display:'flex', color:'black'}}>
+          <Link exact to="/" style={{ textDecoration: 'none', display: 'flex', color: 'black' }}>
+            <ListItem button style={{ height: "80px" }}>
               <ListItemIcon><HomeIcon /></ListItemIcon>
               <ListItemText>Strona Główna</ListItemText>
-              </Link>
             </ListItem>
-            
-            <ListItem button>
-            <Link to="/products" style={{textDecoration: 'none', display:'flex', color:'black'}}>
+          </Link>
+
+          <Link to="/products" style={{ textDecoration: 'none', display: 'flex', color: 'black' }}>
+            <ListItem button style={{ height: "80px" }}>
               <ListItemIcon><SearchIcon /></ListItemIcon>
               <ListItemText>Produkty</ListItemText>
-              </Link>
             </ListItem>
+          </Link>
 
-            <ListItem button>
-            <Link to="/cart" style={{textDecoration: 'none', display:'flex', color:'black'}}>
+          <Link to="/cart" style={{ textDecoration: 'none', display: 'flex', color: 'black' }}>
+            <ListItem button style={{ height: "80px" }}>
               <ListItemIcon><ShoppingCartIcon /></ListItemIcon>
               <ListItemText>Koszyk</ListItemText>
-              </Link>
             </ListItem>
+          </Link>
 
-            <ListItem button>
-            <Link to="/cart" style={{textDecoration: 'none', display:'flex', color:'black'}}>
+          <Link to="/form" style={{ textDecoration: 'none', display: 'flex', color: 'black' }}>
+            <ListItem button style={{ height: "80px" }}>
               <ListItemIcon><ContactMailIcon /></ListItemIcon>
               <ListItemText>Dodaj produkt</ListItemText>
-              </Link>
             </ListItem>
-            
+          </Link>
 
         </List>
-        
       </Drawer>
-      <main className={classes.content} style={{margin:'0', padding:'0'}}>
+
+      {/* <main className={classes.content} style={{margin:'0', padding:'0'}}>
         <div className={classes.toolbar} />
         <Typography paragraph >
         
@@ -205,11 +204,11 @@ export default function MiniDrawer() {
               <Cart/>
              </Route>
              <Route path="/form">
-              
+              <Form/>
              </Route>
            </Switch>
         </Typography>
-      </main>
+      </main> */}
     </div>
   );
 }
