@@ -33,6 +33,7 @@ class Cards extends React.Component {
         localStorage['productsID'] = JSON.stringify(this.state.productsInCart)
     }
 
+    
       handleAddToCart = (passedProduct) => {
           if(this.state.productsInCart.find((product) => product === passedProduct.id)){
               this.setState({

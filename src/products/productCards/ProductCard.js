@@ -12,7 +12,7 @@ class ProductCard extends React.Component {
     setOpen: false
   }
 
-  handleOpen = () => {
+   handleOpen = () => {
     this.setState({
       setOpen: true
   })
@@ -42,13 +42,14 @@ class ProductCard extends React.Component {
               <div className="price-field"> {this.props.product.price.value}{' '}zł{'/'}{this.props.product.price.unit}
               </div>
             </div>
-            <Button size="small" onClick={() => this.props.handleAddToCart(this.props.product)} >
-              <ShoppingCartIcon style={{ fontSize: '1.75rem' }} />
+            <Button size="small">
+              <ShoppingCartIcon style={{ fontSize: '1.75rem' }} onClick={this.handleBuyClick}/>
+
             </Button>
           </CardActions>
         </Card>
         <ProductModal product={this.props.product} open={this.state.setOpen} close={this.handleClose} />
-        
+
       </div>
     )
   }
