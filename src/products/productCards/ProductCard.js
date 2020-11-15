@@ -43,8 +43,7 @@ class ProductCard extends React.Component {
               </div>
             </div>
             <Button size="small">
-              <ShoppingCartIcon style={{ fontSize: '1.75rem' }} onClick={this.handleBuyClick}/>
-
+              <ShoppingCartIcon style={{ fontSize: '1.75rem' }} onClick={() => this.props.handleAddToCart(this.props.product)} />
             </Button>
           </CardActions>
         </Card>
