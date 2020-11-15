@@ -23,9 +23,9 @@ class Products extends React.Component {
                                     <Typography variant="h5">{product.name}</Typography>
                                     <Typography variant="h7">{product.opis}</Typography>
                                     <Button
-                                        style={{ fontSize: '12px', width: '80px', top: "10%" }}
+                                        style={{ fontSize: '12px', width: '80px', top: "10%"}}
                                         onClick={() => this.props.handleOnDelete(product.id)}>
-                                        <DeleteIcon style={{ fontSize: '20px' }} />
+                                        <DeleteIcon style={{ fontSize: '20px', margin:'0 5px 2px 0' }} />
                                         Usuń
                                     </Button>
                                 </div>
