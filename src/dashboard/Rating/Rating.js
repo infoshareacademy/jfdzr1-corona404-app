@@ -1,4 +1,4 @@
-import React, { useEffect, useState }  from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -35,12 +35,25 @@ function RateUs() {
     setOpen(true);
   };
 
-  const handleClose= () => {
+  const handleClose = () => {
     setOpen(false);
   };
 
+  const saveComment = () => {
+    const newComment = {
+      author: 'author',
+      comment: comment,
+      rate: value
+    }
+
+    fetch('https://corona404-2499f.firebaseio.com/comments.json', {
+      method: 'POST',
+      body: JSON.stringify(newComment)
+    })
+  }
+
   const handleAccept = () => {
-    console.log(value, comment)
+    saveComment()
     handleClose();
     setValue(0)
     setComment(null)
