@@ -64,6 +64,7 @@ class ProductCard extends React.Component {
           product={this.props.product}
           open={this.state.setOpen}
           close={this.handleClose}
+          onClick={() => this.props.handleAddToCart(this.props.product)}
         />
       </div>
     );

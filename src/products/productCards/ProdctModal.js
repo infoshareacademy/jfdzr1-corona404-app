@@ -45,7 +45,10 @@ class ProductModal extends React.Component {
               </span>
             </div>
             <Button size="small">
-              <ShoppingCartIcon className="modal_price_field" />
+              <ShoppingCartIcon
+                className="modal_price_field"
+                onClick={this.props.onClick}
+              />
             </Button>
           </CardActions>
         </Card>
