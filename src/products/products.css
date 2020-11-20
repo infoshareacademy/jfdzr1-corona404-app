@@ -8,7 +8,7 @@
   max-width: 75vw;
   display: flex;
   flex-flow: row wrap;
-  justify-content: center;
+  justify-content: flex-start;
   padding-top: 3rem;
   overflow: auto;
   margin: 2rem auto;
