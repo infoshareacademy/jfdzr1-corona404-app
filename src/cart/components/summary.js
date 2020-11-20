@@ -3,7 +3,8 @@ import { Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Discount from './discount';
-import DiscountPopup from './dicountPopup';
+import DiscountPopup from './discountPopup';
+import ErrorPopup from './errorPopup';
 
 const StyledButton = withStyles({
     root: {
@@ -14,7 +15,7 @@ const StyledButton = withStyles({
         color: 'white',
         height: 40,
         padding: '0 20px',
-        transform:'translateY(-10px)',
+        transform: 'translateY(-10px)',
         boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
     },
     label: {
@@ -26,7 +27,9 @@ class Summary extends React.Component {
 
     state = {
         discountCode: '',
-        open: false
+        succesPopup: false,
+        errorPopup: false,
+        discountAccepted: false
     }
 
     handleOnSubmit = (event, passedDiscountCode) => {
@@ -37,13 +40,23 @@ class Summary extends React.Component {
 
         if (passedDiscountCode === "CORONA") {
             this.setState({
-                open: true
+                succesPopup: true,
+                errorPopup: false,
+                discountAccepted: true
             })
         } else {
             this.setState({
-                open: false
+                succesPopup: false,
+                errorPopup: true
             })
         }
+
+        setTimeout(() => {
+            this.setState({
+                errorPopup: false,
+                succesPopup: false
+            })
+        }, 1500);
     }
 
 
@@ -61,7 +74,7 @@ class Summary extends React.Component {
                     <div>
                         <Typography variant="h7">Wysyłka :
                         <span style={{ fontWeight: "800", float: 'right' }}>
-                                {this.state.discountCode === "CORONA" ? "Gratis" : this.props.sendPrice + " zł"}</span>
+                                {this.state.discountCode === "CORONA" ? "GRATIS" : this.props.sendPrice + " zł"}</span>
                         </Typography>
                     </div>
                     <div style={{ textAlign: 'center', marginTop: '50px' }}>
@@ -71,10 +84,13 @@ class Summary extends React.Component {
                 <Discount
                     sendPrice={this.state.sendPrice}
                     handleOnSubmit={this.handleOnSubmit}
+                    discountAccepted={this.state.discountAccepted}
                 />
                 <div>
-                    {this.state.open === true &&
-                        <DiscountPopup open={this.state.open}></DiscountPopup>}
+                    {this.state.succesPopup === true &&
+                        <DiscountPopup open={this.state.succesPopup}></DiscountPopup>}
+                    {this.state.errorPopup === true &&
+                        <ErrorPopup open={this.state.errorPopup}></ErrorPopup>}
                 </div>
             </>
         )

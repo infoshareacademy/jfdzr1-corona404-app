@@ -20,7 +20,7 @@ import HomeIcon from '@material-ui/icons/Home';
 import SearchIcon from '@material-ui/icons/Search';
 import ContactMailIcon from '@material-ui/icons/ContactMail';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import { Link, } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const drawerWidth = 220;
 
@@ -158,7 +158,7 @@ export default function Navigation() {
         </div>
         <Divider />
         <List>
-          <Link exact to="/" style={{ textDecoration: 'none', display: 'flex', color: 'black' }}>
+          <Link to="/" style={{ textDecoration: 'none', display: 'flex', color: 'black' }}>
             <ListItem button style={{ height: "80px" }}>
               <ListItemIcon><HomeIcon /></ListItemIcon>
               <ListItemText>Strona Główna</ListItemText>

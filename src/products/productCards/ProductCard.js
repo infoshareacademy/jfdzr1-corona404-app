@@ -1,4 +1,4 @@
-import { CardActions, CardContent } from '@material-ui/core';
+import { CardActions, CardContent} from '@material-ui/core';
 import React from 'react';
 import Card from "@material-ui/core/Card";
 import Button from "@material-ui/core/Button";
@@ -8,7 +8,6 @@ import '../products.css';
 import ProductModal from './ProdctModal';
 
 class ProductCard extends React.Component {
-
   state = {
     setOpen: false
   }
@@ -26,7 +25,6 @@ class ProductCard extends React.Component {
   };
 
   render() {
-    
     return (
       <div>
         <Card className="productContainer">
@@ -34,21 +32,23 @@ class ProductCard extends React.Component {
             <p className="title">
               {this.props.product.name}
             </p>
-            <div className="img_container" >
-              <img src={this.props.product.image} className="img_wrapper" alt="product-img" onClick={this.handleOpen}/>
+            <div className="img-container">
+              <img src={this.props.product.image} className="img-wrapper" alt="product-img" onClick={this.handleOpen}/>
             </div>
           </CardContent>
           <CardActions className="cardActions">
-            <div size='small'>
-              <AttachMoneyIcon style={{ fontSize: '1.75rem' }} /> {this.props.product.price.value}{' '}zł{'/'}{this.props.product.price.unit}
+            <div size='small' className="cardActions-content">
+              <AttachMoneyIcon style={{ fontSize: '1.75rem' }}/>
+              <div className="price-field"> {this.props.product.price.value}{' '}zł{'/'}{this.props.product.price.unit}
+              </div>
             </div>
-            <Button size="small" onClick={() => this.props.handleAddToCart(this.props.product)} >
-              <ShoppingCartIcon style={{ fontSize: '1.75rem' }} />
+            <Button size="small">
+              <ShoppingCartIcon style={{ fontSize: '1.75rem' }} onClick={() => this.props.handleAddToCart(this.props.product)} />
             </Button>
           </CardActions>
-         </Card>
+        </Card>
         <ProductModal product={this.props.product} open={this.state.setOpen} close={this.handleClose} />
-        
+
       </div>
     )
   }

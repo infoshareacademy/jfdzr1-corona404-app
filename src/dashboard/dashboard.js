@@ -12,6 +12,10 @@ class Dashboard extends React.Component{
 
     componentDidMount(){
         gsap.from(".shop_img",{opacity: 0, duration: 1 ,delay: .2});
+
+        fetch('https://corona404-2499f.firebaseio.com/products.json')
+            .then((res) => res.json())
+            .then((data) => console.log(data))
     }
 
     render(){;

@@ -2,17 +2,17 @@ import React from 'react';
 import ProductCard from './ProductCard';
 import AddedPopup from './AddedPopup';
 import AlreadyAddedPopup from './AlreadyAddedPopup';
-import { products } from '../products';
 import '../products.css';
 
 class Cards extends React.Component {
 
     state = {
-        products: products,
+        products: [],
         productsInCart: [],
         openAddedPopup: false,
         openAlreadyAddedPopup: false,
     }
+
 
     componentDidMount() {
         if(localStorage.getItem("productsID") !== null){
@@ -21,12 +21,23 @@ class Cards extends React.Component {
                 productsInCart: JSON.parse(localStorage["productsID"])
             })
         }
+        fetch('https://corona404-2499f.firebaseio.com/products.json')
+            .then(response => response.json())
+            .then(data => {
+                const formattedData = Object.keys(data).map(key => {
+                    return {
+                        id: key, ...data[key]
+                    }
+                })
+                this.setState({products: formattedData})
+            });
     }
 
     componentDidUpdate() {
         localStorage['productsID'] = JSON.stringify(this.state.productsInCart)
     }
 
+    
       handleAddToCart = (passedProduct) => {
           if(this.state.productsInCart.find((product) => product === passedProduct.id)){
               this.setState({
