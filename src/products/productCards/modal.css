@@ -11,6 +11,7 @@
 .modal_wrapper {
   width: 60%;
   height: auto;
+  overflow-y: initial !important;
   box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
   background: #fff;
   display: flex;
@@ -28,6 +29,8 @@
   align-items: center;
   line-height: 1.8;
   max-width: 70%;
+  max-height: calc(100vh - 50px);
+  overflow-y: auto;
 }
 
 .modal_title {
