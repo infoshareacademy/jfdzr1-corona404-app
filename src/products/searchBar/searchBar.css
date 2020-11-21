@@ -1,0 +1,19 @@
+.flexBar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-bottom: 32px;
+  margin-top: 24px;
+}
+
+.slider,
+.inputForm,
+.dropdown {
+  width: 80%;
+}
+.borderLine {
+  height: 3px;
+  width: 95%;
+
+  background-color: #588da9;
+}
