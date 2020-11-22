@@ -4,11 +4,27 @@ import BarChart from "./bar";
 
 class Charts extends React.Component {
   state = {
-    rateThree: 0,
-    rateFour: 0,
-    rateFive: 0,
+    rateThree: null,
+    rateFour: null,
+    rateFive: null,
+    productCount: null,
     pieData: {},
+    barData: {},
   };
+
+  componentDidMount() {
+    fetch("https://corona404-2499f.firebaseio.com/products.json")
+      .then((response) => response.json())
+      .then((data) => {
+        const formattedData = Object.keys(data).map((key) => {
+          return {
+            id: key,
+            ...data[key],
+          };
+        });
+        this.barData(formattedData.length);
+      });
+  }
 
   componentDidUpdate(prevProps) {
     if (prevProps !== this.props) {
@@ -20,13 +36,30 @@ class Charts extends React.Component {
         rateFive: this.props.comments.filter((comment) => comment.rate === 5)
           .length,
       });
-      this.data();
+      this.pieData();
     }
-
-    console.log(this.state);
   }
 
-  data = () => {
+  barData = (prodCount) => {
+    this.setState({
+      barData: {
+        labels: ["", "", "", "", "", ""],
+        datasets: [
+          {
+            label: "Liczba produktów w sklepie",
+            backgroundColor: "#76b5da",
+            borderColor: "#76b5da",
+            borderWidth: 1,
+            hoverBackgroundColor: "#a8dadc",
+            hoverBorderColor: "#a8dadc",
+            data: [1, 4, 7, 9, 11, prodCount],
+          },
+        ],
+      },
+    });
+  };
+
+  pieData = () => {
     this.setState({
       pieData: {
         labels: ["5 ⭐", "4 ⭐", "3 ⭐"],
@@ -54,7 +87,7 @@ class Charts extends React.Component {
     return (
       <div className="graph_container">
         <PieChart pieData={this.state.pieData} />
-        <BarChart />
+        <BarChart barData={this.state.barData} />
       </div>
     );
   }
