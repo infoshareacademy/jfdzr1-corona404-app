@@ -1,36 +1,53 @@
-// Komponent Głownego ekranu - Dashboard //
-import React from 'react';
-import './dashboard.css';
-import { Title } from './title';
-import { Subtitle } from './subtitle';
-import shop from './images/money.svg';
-import Comments from './comments';
-import Charts from './charts';
-import gsap from 'gsap';
-import RateUs from './Rating/Rating'
+import React from "react";
+import "./dashboard.css";
+import { Title } from "./title";
+import { Subtitle } from "./subtitle";
+import shop from "./images/money.svg";
+import Comments from "./comments";
+import Charts from "./charts";
+import gsap from "gsap";
 
-class Dashboard extends React.Component{
+class Dashboard extends React.Component {
+  state = {
+    comments: [],
+    commentsToDisplay: [],
+  };
 
-    componentDidMount(){
-        gsap.from(".shop_img",{opacity: 0, duration: 1 ,delay: .2});
+  async componentDidMount() {
+    gsap.from(".shop_img", { opacity: 0, duration: 1, delay: 0.2 });
 
-        fetch('https://corona404-2499f.firebaseio.com/products.json')
-            .then((res) => res.json())
-            .then((data) => console.log(data))
-    }
+    await fetch("https://corona404-2499f.firebaseio.com/comments.json")
+      .then((response) => response.json())
+      .then((data) => {
+        const formattedData = Object.keys(data).map((key) => {
+          return {
+            id: key,
+            ...data[key],
+          };
+        });
+        this.setState({ comments: formattedData });
+      });
 
-    render(){;
-        return(
-            <section className="main_container">
-            <Title></Title>
-            <img src={shop} className="shop_img" alt="shopping app"></img>
-                <Charts></Charts>
-                <Subtitle></Subtitle>
-                <Comments></Comments>
-                {/* <RateUs /> */}
-            </section>
-        )
-    }
+    const commentsToDisplay = this.state.comments.slice(
+      Math.max(this.state.comments.length - 3, 0)
+    );
+    this.setState({
+      commentsToDisplay: commentsToDisplay,
+    });
+    console.log(commentsToDisplay);
+  }
+
+  render() {
+    return (
+      <section className="main_container">
+        <Title></Title>
+        <img src={shop} className="shop_img" alt="shopping app"></img>
+        <Charts comments={this.state.comments}></Charts>
+        <Subtitle></Subtitle>
+        <Comments commentsToDisplay={this.state.commentsToDisplay}></Comments>
+      </section>
+    );
+  }
 }
 
 export default Dashboard;
