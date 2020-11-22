@@ -34,7 +34,6 @@ class Dashboard extends React.Component {
     this.setState({
       commentsToDisplay: commentsToDisplay,
     });
-    console.log(commentsToDisplay);
   }
 
   render() {
