@@ -44,8 +44,12 @@ class ProductCard extends React.Component {
               <AttachMoneyIcon style={{ fontSize: "1.75rem" }} />
               <div className="price-field">
                 {" "}
-                {this.props.product.price.value} zł{"/"}
-                {this.props.product.price.unit}
+                {this.props.product.price.value}
+                <span style={{ fontSize: "1rem" }}>
+                  {" "}
+                  zł{"/"}
+                  {this.props.product.price.unit}
+                </span>
               </div>
             </div>
             <Button size="small">
@@ -60,6 +64,7 @@ class ProductCard extends React.Component {
           product={this.props.product}
           open={this.state.setOpen}
           close={this.handleClose}
+          onClick={() => this.props.handleAddToCart(this.props.product)}
         />
       </div>
     );

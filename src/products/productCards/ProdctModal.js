@@ -35,13 +35,20 @@ class ProductModal extends React.Component {
             </p>
           </CardContent>
           <CardActions className="cardActions">
-            <div size="small">
-              <AttachMoneyIcon style={{ fontSize: "1.75rem" }} />{" "}
-              {this.props.product.price.value} zł{"/"}
-              {this.props.product.price.unit}
+            <AttachMoneyIcon className="modal_price_field" />{" "}
+            <div size="small" className="modal_price_field">
+              {this.props.product.price.value}{" "}
+              <span className="modal_price_span">
+                {" "}
+                zł{"/"}
+                {this.props.product.price.unit}{" "}
+              </span>
             </div>
             <Button size="small">
-              <ShoppingCartIcon style={{ fontSize: "1.75rem" }} />
+              <ShoppingCartIcon
+                className="modal_price_field"
+                onClick={this.props.onClick}
+              />
             </Button>
           </CardActions>
         </Card>
