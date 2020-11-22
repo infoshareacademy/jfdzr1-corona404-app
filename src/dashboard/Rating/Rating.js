@@ -12,7 +12,7 @@ import Rating from "@material-ui/lab/Rating";
 const StyledButton = withStyles({
   root: {
     height: "40px",
-    background: "#db3b7b",
+    background: "#457b9d",
     borderRadius: 10,
     fontSize: 20,
     lineHeight: 1.2,
@@ -67,7 +67,7 @@ function RateUs() {
     <div className="rating">
       <StyledButton
         variant="contained"
-        color="secondary"
+        color="primary"
         onClick={handleClickOpen}
       >
         Dodaj opinię
