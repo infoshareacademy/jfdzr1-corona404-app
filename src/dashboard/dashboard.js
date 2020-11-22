@@ -7,11 +7,16 @@ import shop from './images/money.svg';
 import Comments from './comments';
 import Charts from './charts';
 import gsap from 'gsap';
+import RateUs from './Rating/Rating'
 
 class Dashboard extends React.Component{
 
     componentDidMount(){
         gsap.from(".shop_img",{opacity: 0, duration: 1 ,delay: .2});
+
+        fetch('https://corona404-2499f.firebaseio.com/products.json')
+            .then((res) => res.json())
+            .then((data) => console.log(data))
     }
 
     render(){;
@@ -22,6 +27,7 @@ class Dashboard extends React.Component{
                 <Charts></Charts>
                 <Subtitle></Subtitle>
                 <Comments></Comments>
+                {/* <RateUs /> */}
             </section>
         )
     }
