@@ -1,14 +1,12 @@
-import React from "react"
-import Dashboard from './dashboard/dashboard'
-import Cart from './cart/cart'
-import Cards from './products/productCards/Cards'
-import { Switch, Route, BrowserRouter } from 'react-router-dom'
-import Navigation from './navigation/navigation'
-import Form from './form/Form';
-
+import React from "react";
+import Dashboard from "./dashboard/dashboard";
+import Cart from "./cart/cart";
+import Cards from "./products/productCards/Cards";
+import { Switch, Route, BrowserRouter } from "react-router-dom";
+import Navigation from "./navigation/navigation";
+import Form from "./form/Form";
 
 function App() {
-
   return (
     <BrowserRouter>
       <Navigation />
@@ -29,7 +27,5 @@ function App() {
     </BrowserRouter>
   );
 }
-
-
 
 export default App;
