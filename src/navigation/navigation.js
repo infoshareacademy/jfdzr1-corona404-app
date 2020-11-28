@@ -21,6 +21,8 @@ import SearchIcon from '@material-ui/icons/Search';
 import ContactMailIcon from '@material-ui/icons/ContactMail';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { Link } from "react-router-dom";
+import firebase from 'firebase';
+import {useEffect, useState} from 'react';
 
 const drawerWidth = 220;
 
@@ -90,10 +92,29 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
 export default function Navigation() {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const [user, setUser] = useState({ loggedIn: false });
+  useEffect(() => {
+    const unsubscribe = onAuthStateChange();
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+
+  function onAuthStateChange() {
+    return firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        console.log("The user is logged in");
+      } else {
+        console.log("The user is not logged in");
+      }
+    });
+  }
+  
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -103,6 +124,11 @@ export default function Navigation() {
     setOpen(false);
   };
 
+  const signOut = () => {
+    firebase.auth().signOut();
+}
+
+  
   return (
     <div className={classes.root}
       style={{ paddingTop: 56 }}
