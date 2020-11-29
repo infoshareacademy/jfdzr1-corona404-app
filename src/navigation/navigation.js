@@ -23,6 +23,8 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { Link } from "react-router-dom";
 import firebase from 'firebase';
 import {useEffect, useState} from 'react';
+import button from '@material-ui/core/button';
+import Button from '@material-ui/core/button';
 
 const drawerWidth = 220;
 
@@ -97,23 +99,12 @@ export default function Navigation() {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-  const [user, setUser] = useState({ loggedIn: false });
+  const [user, setUser] = useState(null);
   useEffect(() => {
-    const unsubscribe = onAuthStateChange();
-    return () => {
-      unsubscribe();
-    };
+  firebase.auth().onAuthStateChanged(user => {
+        setUser(user)
+      });
   }, []);
-
-  function onAuthStateChange() {
-    return firebase.auth().onAuthStateChanged(user => {
-      if (user) {
-        console.log("The user is logged in");
-      } else {
-        console.log("The user is not logged in");
-      }
-    });
-  }
   
 
   const handleDrawerOpen = () => {
@@ -128,8 +119,13 @@ export default function Navigation() {
     firebase.auth().signOut();
 }
 
+const signIn = () => {
+  firebase.auth().signInWithEmailAndPassword();
+}
+
   
   return (
+    
     <div className={classes.root}
       style={{ paddingTop: 56 }}
     >
@@ -141,7 +137,8 @@ export default function Navigation() {
           [classes.appBarShift]: open,
         })}
       >
-        <Toolbar
+        
+        <Toolbar style={{display: 'flex'}}
         >
           <IconButton
             style={{ color: "green" }}
@@ -158,9 +155,9 @@ export default function Navigation() {
           <Typography
             variant="h6"
             noWrap>
-
             Sklep 404 - Tylko Polska jakość!
           </Typography>
+ <div style={{marginLeft:'auto'}}>{user ? <Button onClick={signOut} style={{color: 'white', border:'1px white solid'}}>Sign out</Button> : <Link to="/sign-in" style={{textDecoration: 'none'}}><Button style={{color: 'white', border:'1px white solid'}}>Sign in</Button></Link>}</div>
         </Toolbar>
       </AppBar>
       <Drawer
