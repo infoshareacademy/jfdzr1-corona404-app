@@ -23,8 +23,9 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { Link } from "react-router-dom";
 import firebase from 'firebase';
 import {useEffect, useState} from 'react';
-import button from '@material-ui/core/button';
 import Button from '@material-ui/core/button';
+import QueueIcon from '@material-ui/icons/Queue';
+
 
 const drawerWidth = 220;
 
@@ -204,8 +205,15 @@ const signIn = () => {
 
           <Link to="/form" style={{ textDecoration: 'none', display: 'flex', color: 'black' }}>
             <ListItem button style={{ height: "80px" }}>
-              <ListItemIcon><ContactMailIcon /></ListItemIcon>
+              <ListItemIcon><QueueIcon/></ListItemIcon>
               <ListItemText>Dodaj produkt</ListItemText>
+            </ListItem>
+          </Link>
+
+          <Link to="/profile" style={{ textDecoration: 'none', display: 'flex', color: 'black' }}>
+            <ListItem button style={{ height: "80px" }}>
+              <ListItemIcon><ContactMailIcon /></ListItemIcon>
+              <ListItemText>Profile</ListItemText>
             </ListItem>
           </Link>
 

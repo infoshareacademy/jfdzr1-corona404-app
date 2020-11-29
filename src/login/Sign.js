@@ -39,14 +39,14 @@ export class Sign extends React.Component {
         const { isSignUp } = this.props;
 
         if (this.state.shouldRedirect) {
-            return <Redirect to="/form" />
+            return <Redirect to="/" />
         }
 
         return (
             <Container component="main" maxWidth="xs">
                 <div style={{marginTop: "20px", display: 'flex', alignItems: 'center', flexDirection: 'column'}}>
                     <Avatar>
-                        <LockOutlinedIcon/>
+                       <LockOutlinedIcon/>
                     </Avatar>
                     <Typography component="h1" variant="h5">
                         {isSignUp ? 'Register New User' : 'Sign in'}
