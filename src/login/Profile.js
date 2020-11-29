@@ -20,9 +20,9 @@ export class Profile extends React.Component {
     }
 
     fetchUserData = () => {
-        fetch(`${DATABASE_URL}/nicks/${this.state.user.uid}.json`)
+        fetch(`${DATABASE_URL}/name/${this.state.user.uid}.json`)
             .then(response => response.json())
-            .then(nick => this.setState({ nick }))
+            .then(name => this.setState({ name }))
     }
 
     componentDidMount() {
@@ -67,7 +67,7 @@ export class Profile extends React.Component {
     handleOnDataSubmit= (event) => {
         event.preventDefault();
 
-        fetch(`${DATABASE_URL}/nicks/${this.state.user.uid}.json`, {
+        fetch(`${DATABASE_URL}/name/${this.state.user.uid}.json`, {
             method: 'PUT',
             body: JSON.stringify(this.state.newName)
         }).then(() => {
@@ -84,7 +84,7 @@ export class Profile extends React.Component {
                     style={{ width: '200px', height: '180px', marginBottom: '15px', borderRadius: '25px'}}
                     src={this.state.url || avatarPlaceholder}
                 />
-                <Typography variant="h6">{this.state.nick}</Typography>
+                <Typography variant="h6">{this.state.name}</Typography>
 
               
                 <Typography variant="caption">{this.state.file && this.state.file.name}</Typography>
