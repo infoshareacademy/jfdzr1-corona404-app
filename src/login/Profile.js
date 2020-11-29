@@ -6,7 +6,6 @@ import Button from "@material-ui/core/Button";
 import avatarPlaceholder from '../assets/avatar.png';
 import {Auth} from "../Auth";
 import TextField from "@material-ui/core/TextField";
-
 const DATABASE_URL = 'https://corona404-2499f.firebaseio.com';
 
 export class Profile extends React.Component {
@@ -79,18 +78,19 @@ export class Profile extends React.Component {
     render() {
         return <Auth>
             <div style={{display:'flex', flexDirection: 'column', alignItems:'center', marginTop:'20px'}}>
-                <Typography variant="h3">Profile</Typography>
+                <Typography variant="h3">Edit Profile</Typography>
+
+                <Typography variant="h6" style={{marginTop:'50px'}}>Welcome {this.state.name}!</Typography>
+
                 <img
+                    alt="avatar"
                     style={{ width: '200px', height: '180px', marginBottom: '15px', borderRadius: '25px'}}
                     src={this.state.url || avatarPlaceholder}
                 />
-                <Typography variant="h6">{this.state.name}</Typography>
+                
 
-              
-                <Typography variant="caption">{this.state.file && this.state.file.name}</Typography>
-
-                <form onSubmit={this.handleOnDataSubmit, this.handleOnSubmit} style={{ display: 'flex', flexDirection: 'column', marginTop:'30px'}}>
-                <input
+                <form onSubmit={this.handleOnSubmit} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+                    <input
                         accept="image/*"
                         id="avatar"
                         type="file"
@@ -98,12 +98,21 @@ export class Profile extends React.Component {
                         onChange={this.handleOnChange}
                     />
                     <label htmlFor="avatar">
-                        <Button component="span" variant="outlined" color="secondary"  startIcon={<PhotoCamera />}>
-                            Upload photo
+                        <Button component="span" variant="outlined" color="secondary" startIcon={<PhotoCamera />}>
+                            Change Avatar
                         </Button>
                     </label>
-                    <TextField label='Insert Name' value={this.state.newName} onChange={this.handleOnDataChage} />
-                    <Button variant="contained" color="primary" type="submit" style={{marginTop:'30px'}}>
+                    {this.state.file && (
+                        <Button variant="outlined" color="primary" type="submit" style={{ marginTop: '5px'}}>
+                            Upload
+                        </Button>
+                    )}
+                </form>
+                <Typography variant="caption">{this.state.file && this.state.file.name}</Typography>
+
+                <form onSubmit={this.handleOnDataSubmit} style={{ display: 'flex', flexDirection: 'column', marginTop:'10px'}}>
+                    <TextField label='Add Name' value={this.state.newName} onChange={this.handleOnDataChage} />
+                    <Button variant="contained" color="primary" type="submit" style={{marginTop:'10px'}}>
                         Save
                     </Button>
                 </form>
