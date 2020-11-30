@@ -78,9 +78,9 @@ export class Profile extends React.Component {
     render() {
         return <Auth>
             <div style={{display:'flex', flexDirection: 'column', alignItems:'center', marginTop:'20px'}}>
-                <Typography variant="h3">Edit Profile</Typography>
+                <Typography variant="h3">Uzupełnik Profil</Typography>
 
-                <Typography variant="h6" style={{marginTop:'50px'}}>Welcome {this.state.name}!</Typography>
+                <Typography variant="h6" style={{marginTop:'50px'}}>Cześć {this.state.name}!</Typography>
 
                 <img
                     alt="avatar"
@@ -111,7 +111,7 @@ export class Profile extends React.Component {
                 <Typography variant="caption">{this.state.file && this.state.file.name}</Typography>
 
                 <form onSubmit={this.handleOnDataSubmit} style={{ display: 'flex', flexDirection: 'column', marginTop:'10px'}}>
-                    <TextField label='Add Name' value={this.state.newName} onChange={this.handleOnDataChage} />
+                    <TextField label='Wpisz imię...' value={this.state.newName} onChange={this.handleOnDataChage} />
                     <Button variant="contained" color="primary" type="submit" style={{marginTop:'10px'}}>
                         Save
                     </Button>
