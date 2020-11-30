@@ -27,7 +27,7 @@ export class Auth extends React.Component {
             : (
                 <div className="component-container">
                     <Typography variant="h6" style={{marginTop: '20px', textAlign: 'center'}}>
-                        To see this content. Please <Link to="/sign-in">SIGN IN</Link>.
+                        Aby wyświetlić zawartość. Proszę <Link to="/sign-in">Zaloguj Się</Link>.
                     </Typography>
                 </div>
             )
