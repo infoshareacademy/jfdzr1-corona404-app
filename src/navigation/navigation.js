@@ -158,7 +158,7 @@ const signIn = () => {
             noWrap>
             Sklep 404 - Tylko Polska jakość!
           </Typography>
- <div style={{marginLeft:'auto'}}>{user ? <Button onClick={signOut} style={{color: 'white', border:'1px white solid'}}>Sign out</Button> : <Link to="/sign-in" style={{textDecoration: 'none'}}><Button style={{color: 'white', border:'1px white solid'}}>Sign in</Button></Link>}</div>
+ <div style={{marginLeft:'auto'}}>{user ? <Button onClick={signOut} style={{color: 'white', border:'1px white solid'}}>Wyloguj</Button> : <Link to="/sign-in" style={{textDecoration: 'none'}}><Button style={{color: 'white', border:'1px white solid'}}>Zaloguj</Button></Link>}</div>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -213,7 +213,7 @@ const signIn = () => {
           <Link to="/profile" style={{ textDecoration: 'none', display: 'flex', color: 'black' }}>
             <ListItem button style={{ height: "80px" }}>
               <ListItemIcon><ContactMailIcon /></ListItemIcon>
-              <ListItemText>Profile</ListItemText>
+              <ListItemText>Profil</ListItemText>
             </ListItem>
           </Link>
 
