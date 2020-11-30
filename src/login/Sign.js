@@ -49,7 +49,7 @@ export class Sign extends React.Component {
                        <LockOutlinedIcon/>
                     </Avatar>
                     <Typography component="h1" variant="h5">
-                        {isSignUp ? 'Register New User' : 'Sign in'}
+                        {isSignUp ? 'Załóż konto' : 'Zaloguj'}
                     </Typography>
                     <form noValidate onSubmit={this.handleOnSubmit}>
                         <TextField
@@ -85,12 +85,12 @@ export class Sign extends React.Component {
                             color="primary"
                             size="large"
                         >
-                            {isSignUp ? 'Register' : 'Sign In'}
+                            {isSignUp ? 'Załóż konto' : 'Zaloguj'}
                         </Button>
                         <div style={{ textAlign: 'center', marginTop: '5px'}}>
                             {isSignUp
-                                ? <Link to="/sign-in">Already have an account? Sign In</Link>
-                                : <Link to="/sign-up">Don't have an account? Register</Link>
+                                ? <Link to="/sign-in">Posiadasz już konto? Zaloguj się.</Link>
+                                : <Link to="/sign-up">Nie masz jeszcze konta? Załóż je teraz.</Link>
                             }
                         </div>
                     </form>
