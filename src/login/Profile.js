@@ -99,12 +99,12 @@ export class Profile extends React.Component {
                     />
                     <label htmlFor="avatar">
                         <Button component="span" variant="outlined" color="secondary" startIcon={<PhotoCamera />}>
-                            Change Avatar
+                            Wybierz zdjęcie.
                         </Button>
                     </label>
                     {this.state.file && (
                         <Button variant="outlined" color="primary" type="submit" style={{ marginTop: '5px'}}>
-                            Upload
+                            Wyślij
                         </Button>
                     )}
                 </form>
