@@ -78,7 +78,7 @@ export class Profile extends React.Component {
     render() {
         return <Auth>
             <div style={{display:'flex', flexDirection: 'column', alignItems:'center', marginTop:'20px'}}>
-                <Typography variant="h3">Uzupełnik Profil</Typography>
+                <Typography variant="h3">Uzupełnij Profil</Typography>
 
                 <Typography variant="h6" style={{marginTop:'50px'}}>Cześć {this.state.name}!</Typography>
 
