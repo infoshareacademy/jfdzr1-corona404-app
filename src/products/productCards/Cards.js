@@ -65,28 +65,32 @@ class Cards extends React.Component {
 
   render() {
     return (
-      <div style={{ marginBottom: "20px" }}>
-        <SearchBar />
-        <div className="sectionLayout">
-          {this.state.products.map((product) => (
-            <div style={{ marginBottom: "20px" }} key={product.id}>
-              <ProductCard
-                product={product}
-                handleAddToCart={this.handleAddToCart}
-              />
+      <div
+        style={{ display: "flex", justifyContent: "center", margin: " 0 auto" }}
+      >
+        <div className="sectionWrapper">
+          <SearchBar />
+          <div className="sectionLayout">
+            {this.state.products.map((product) => (
+              <div style={{ marginBottom: "20px" }} key={product.id}>
+                <ProductCard
+                  product={product}
+                  handleAddToCart={this.handleAddToCart}
+                />
+              </div>
+            ))}
+            <div>
+              {this.state.openAddedPopup === true && (
+                <AddedPopup open={this.state.openAddedPopup}></AddedPopup>
+              )}
             </div>
-          ))}
-          <div>
-            {this.state.openAddedPopup === true && (
-              <AddedPopup open={this.state.openAddedPopup}></AddedPopup>
-            )}
-          </div>
-          <div>
-            {this.state.openAlreadyAddedPopup === true && (
-              <AlreadyAddedPopup
-                open={this.state.openAlreadyAddedPopup}
-              ></AlreadyAddedPopup>
-            )}
+            <div>
+              {this.state.openAlreadyAddedPopup === true && (
+                <AlreadyAddedPopup
+                  open={this.state.openAlreadyAddedPopup}
+                ></AlreadyAddedPopup>
+              )}
+            </div>
           </div>
         </div>
       </div>

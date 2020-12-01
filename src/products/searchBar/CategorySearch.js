@@ -3,11 +3,10 @@ import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
-  button: {
-    display: "block",
-  },
-  formControl: {
-    width: "100%",
+  root: {
+    "& > *": {
+      width: "100%",
+    },
   },
 }));
 
@@ -18,7 +17,7 @@ const CategorySearch = () => {
   // }
 
   return (
-    <form noValidate autoComplete="off">
+    <form className={classes.root} noValidate autoComplete="off">
       <TextField
         id="outlined-basic"
         label="Wyszukaj po kategorii"
