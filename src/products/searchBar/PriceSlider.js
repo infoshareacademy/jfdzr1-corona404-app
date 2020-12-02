@@ -16,7 +16,7 @@ function valuetext(value) {
 
 const PriceSlider = () => {
   const classes = useStyles();
-  const [value, setValue] = React.useState([10, 100]);
+  const [value, setValue] = React.useState([1, 500]);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -31,6 +31,8 @@ const PriceSlider = () => {
         Wybierz zakres cen
       </Typography>
       <Slider
+        style={{ color: "#b2dddf" }}
+        max={500}
         value={value}
         onChange={handleChange}
         valueLabelDisplay="auto"

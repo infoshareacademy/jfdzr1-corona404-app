@@ -10,11 +10,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const InputSearch = () => {
+const InputSearch = ({ onFormChange, filterValue }) => {
   const classes = useStyles();
-  // const handleOnChange = (event) => {
-  //   onFormChange(event.target.value);
-  // };
+  const handleOnChange = (event) => {
+    onFormChange(event.target.value);
+  };
 
   return (
     <form className={classes.root} noValidate autoComplete="off">
@@ -22,6 +22,8 @@ const InputSearch = () => {
         id="outlined-basic"
         label="Wyszukaj produkt"
         variant="outlined"
+        value={filterValue}
+        onChange={handleOnChange}
       />
     </form>
   );
