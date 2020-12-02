@@ -12,14 +12,13 @@
   align-content: center;
   margin-left: 72px;
   padding-top: 30px;
-  /* margin: 0 auto; */
 }
 
 .sectionLayout {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  place-content: center;
+  /* place-content: center; */
 }
 
 .productContainer {

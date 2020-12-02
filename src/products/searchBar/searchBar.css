@@ -2,12 +2,13 @@
   display: flex;
   justify-content: center;
   width: 100%;
+
   /* align-items: center; */
   /* margin: 32px 0 24px 72px; */
 }
 
 .flexBar {
-  width: 90%;
+  width: 99%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -22,12 +23,11 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  /* margin-left: 72px; */
 }
 .borderLine {
   display: flex;
   height: 3px;
-  width: 90%;
+  width: 99%;
   margin: 15px auto;
   background-color: #b2dddf;
 }
