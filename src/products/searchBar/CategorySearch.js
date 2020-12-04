@@ -1,29 +1,60 @@
 import React from "react";
-import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
+// import { propTypes } from 'react-visibility-sensor';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    "& > *": {
-      width: "100%",
-    },
+  button: {
+    display: "block",
+  },
+  formControl: {
+    width: "100%",
   },
 }));
 
-const CategorySearch = () => {
+const CategorySearch = ({ onDropDownChange, dropDownValue }) => {
   const classes = useStyles();
-  // const handleOnChange = (event) => {
-  //     onFormChange(event.target.value)
-  // }
+  const [age, setAge] = React.useState(dropDownValue);
+  const [open, setOpen] = React.useState(false);
+
+  const handleChange = (event) => {
+    setAge(event.target.value);
+    onDropDownChange(event.target.value);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
 
   return (
-    <form className={classes.root} noValidate autoComplete="off">
-      <TextField
-        id="outlined-basic"
-        label="Wyszukaj po kategorii"
-        variant="outlined"
-      />
-    </form>
+    <>
+      <FormControl className={classes.formControl}>
+        <InputLabel id="demo-controlled-open-select-label">
+          Wybierz kategorie
+        </InputLabel>
+        <Select
+          labelId="demo-controlled-open-select-label"
+          id="demo-controlled-open-select"
+          open={open}
+          onClose={handleClose}
+          onOpen={handleOpen}
+          value={age}
+          onChange={handleChange}
+        >
+          <MenuItem value={age}>food</MenuItem>
+          <MenuItem value={10}>drinks</MenuItem>
+          <MenuItem value={20}>clothes</MenuItem>
+          <MenuItem value={30}>others</MenuItem>
+        </Select>
+      </FormControl>
+    </>
   );
 };
 

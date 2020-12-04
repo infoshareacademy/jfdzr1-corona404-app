@@ -50,11 +50,9 @@ class Cards extends React.Component {
           : [];
         this.setState({
           products: formattedData,
-
           filteredList: formattedData,
           isLoading: false,
         });
-        console.log(formattedData);
       });
   };
   componentDidMount() {
@@ -106,20 +104,24 @@ class Cards extends React.Component {
             product.price.value <= this.state.priceMax
           );
         }),
+
       currentPage: 1,
     });
   };
+
   handleOnSliderChange = (upDateRange) => {
     this.setState(
       {
         priceMin: upDateRange[0],
         priceMax: upDateRange[1],
       },
+
       () => {
         this.applyFilter();
       }
     );
   };
+
   handleOnFormChange = (textFilter) => {
     this.setState(
       {
@@ -193,9 +195,9 @@ class Cards extends React.Component {
             </PageWrapper>
           ) : (
             <>
-              {this.state.products.length > 0 ? (
+              {this.state.filteredList.length > 0 ? (
                 <div className="sectionLayout">
-                  {this.state.products
+                  {this.state.filteredList
                     .slice(firstIndex, lastIndex)
                     .map((product) => {
                       return (

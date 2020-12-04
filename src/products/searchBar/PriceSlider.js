@@ -14,7 +14,7 @@ function valuetext(value) {
   return `${value} PLN`;
 }
 
-const PriceSlider = (onSliderChange, priceMin, priceMax) => {
+const PriceSlider = ({ onSliderChange, priceMin, priceMax }) => {
   const classes = useStyles();
   const [value, setValue] = React.useState([priceMin, priceMax]);
   const handleChange = (event, newValue) => {
@@ -33,7 +33,6 @@ const PriceSlider = (onSliderChange, priceMin, priceMax) => {
       </Typography>
       <Slider
         style={{ color: "#b2dddf" }}
-        min={0}
         max={300}
         value={value}
         onChange={handleChange}
