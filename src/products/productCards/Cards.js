@@ -184,9 +184,9 @@ class Cards extends React.Component {
               textAlign: "center",
             }}
           >
-            <RadioButtonsGroup
+            {/* <RadioButtonsGroup
               onProductsPerPageChanged={this.productsPerPageChanged}
-            />
+            /> */}
           </div>
 
           {this.state.isLoading ? (
@@ -225,11 +225,11 @@ class Cards extends React.Component {
                   ></AlreadyAddedPopup>
                 )}
               </div>
-              <BasicPagination
+              {/* <BasicPagination
                 productsPerPage={this.state.productsPerPage}
                 productsLength={this.state.filteredList.length}
                 updatePage={this.pageChanged}
-              />
+              /> */}
             </>
           )}
         </div>
