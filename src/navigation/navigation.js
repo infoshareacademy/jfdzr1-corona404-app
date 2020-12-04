@@ -21,6 +21,11 @@ import SearchIcon from '@material-ui/icons/Search';
 import ContactMailIcon from '@material-ui/icons/ContactMail';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { Link } from "react-router-dom";
+import firebase from 'firebase';
+import {useEffect, useState} from 'react';
+import Button from '@material-ui/core/button';
+import QueueIcon from '@material-ui/icons/Queue';
+
 
 const drawerWidth = 220;
 
@@ -90,10 +95,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
 export default function Navigation() {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+  firebase.auth().onAuthStateChanged(user => {
+        setUser(user)
+      });
+  }, []);
+  
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -103,7 +116,17 @@ export default function Navigation() {
     setOpen(false);
   };
 
+  const signOut = () => {
+    firebase.auth().signOut();
+}
+
+const signIn = () => {
+  firebase.auth().signInWithEmailAndPassword();
+}
+
+  
   return (
+    
     <div className={classes.root}
       style={{ paddingTop: 56 }}
     >
@@ -115,7 +138,8 @@ export default function Navigation() {
           [classes.appBarShift]: open,
         })}
       >
-        <Toolbar
+        
+        <Toolbar style={{display: 'flex'}}
         >
           <IconButton
             style={{ color: "green" }}
@@ -132,9 +156,9 @@ export default function Navigation() {
           <Typography
             variant="h6"
             noWrap>
-
             Sklep 404 - Tylko Polska jakość!
           </Typography>
+ <div style={{marginLeft:'auto'}}>{user ? <Button onClick={signOut} style={{color: 'white', border:'1px white solid'}}>Wyloguj</Button> : <Link to="/sign-in" style={{textDecoration: 'none'}}><Button style={{color: 'white', border:'1px white solid'}}>Zaloguj</Button></Link>}</div>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -181,8 +205,15 @@ export default function Navigation() {
 
           <Link to="/form" style={{ textDecoration: 'none', display: 'flex', color: 'black' }}>
             <ListItem button style={{ height: "80px" }}>
-              <ListItemIcon><ContactMailIcon /></ListItemIcon>
+              <ListItemIcon><QueueIcon/></ListItemIcon>
               <ListItemText>Dodaj produkt</ListItemText>
+            </ListItem>
+          </Link>
+
+          <Link to="/profile" style={{ textDecoration: 'none', display: 'flex', color: 'black' }}>
+            <ListItem button style={{ height: "80px" }}>
+              <ListItemIcon><ContactMailIcon /></ListItemIcon>
+              <ListItemText>Profil</ListItemText>
             </ListItem>
           </Link>
 
