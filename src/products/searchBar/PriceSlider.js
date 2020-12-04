@@ -14,11 +14,12 @@ function valuetext(value) {
   return `${value} PLN`;
 }
 
-const PriceSlider = () => {
+const PriceSlider = (onSliderChange, priceMin, priceMax) => {
   const classes = useStyles();
-  const [value, setValue] = React.useState([1, 500]);
+  const [value, setValue] = React.useState([priceMin, priceMax]);
   const handleChange = (event, newValue) => {
     setValue(newValue);
+    onSliderChange(newValue);
   };
 
   return (
@@ -32,10 +33,11 @@ const PriceSlider = () => {
       </Typography>
       <Slider
         style={{ color: "#b2dddf" }}
-        max={500}
+        min={0}
+        max={300}
         value={value}
         onChange={handleChange}
-        valueLabelDisplay="auto"
+        valueLabelDisplay="on"
         aria-labelledby="range-slider"
         getAriaValueText={valuetext}
       />
