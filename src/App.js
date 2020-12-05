@@ -1,3 +1,4 @@
+
 import React from "react"
 import Dashboard from './dashboard/dashboard'
 import Cart from './cart/cart'
@@ -9,9 +10,7 @@ import {Sign} from "./login/Sign"
 import {Auth} from "./Auth"
 import { Profile } from './login/Profile'
 
-
 function App() {
-
   return (
     <BrowserRouter>
       <Navigation />
@@ -45,7 +44,5 @@ function App() {
     </BrowserRouter>
   );
 }
-
-
 
 export default App;
