@@ -25,6 +25,8 @@ import firebase from 'firebase';
 import {useEffect, useState} from 'react';
 import Button from '@material-ui/core/button';
 import QueueIcon from '@material-ui/icons/Queue';
+import LanguageIcon from '@material-ui/icons/Language';
+
 
 
 const drawerWidth = 220;
@@ -229,6 +231,13 @@ const signIn = () => {
             <ListItem button style={{ height: "80px" }}>
               <ListItemIcon><ContactMailIcon /></ListItemIcon>
               <ListItemText>Profil</ListItemText>
+            </ListItem>
+          </Link>
+          <hr></hr>
+          <Link to={{ pathname: "http://www.corona404.jfdzr1.is-academy.pl/" }} target="_blank" style={{ textDecoration: 'none', display: 'flex', color: 'black'}} >
+          <ListItem button style={{ height: "80px" }}>
+              <ListItemIcon><LanguageIcon /></ListItemIcon>
+              <ListItemText>Corona404</ListItemText>
             </ListItem>
           </Link>
         </List>

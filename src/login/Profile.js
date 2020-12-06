@@ -6,7 +6,9 @@ import Button from "@material-ui/core/Button";
 import avatarPlaceholder from '../assets/avatar.png';
 import {Auth} from "../Auth";
 import TextField from "@material-ui/core/TextField";
+import '../dashboard/dashboard.css';
 const DATABASE_URL = 'https://corona404-2499f.firebaseio.com';
+
 
 export class Profile extends React.Component {
     state = {
@@ -78,9 +80,9 @@ export class Profile extends React.Component {
     render() {
         return <Auth>
             <div style={{display:'flex', flexDirection: 'column', alignItems:'center', marginTop:'20px'}}>
-                <Typography variant="h3">Uzupełnij Profil</Typography>
+                <h1 className="header2__span">Uzupełnij Profil</h1>
 
-                <Typography variant="h6" style={{marginTop:'50px'}}>Cześć {this.state.name}!</Typography>
+                <h2 className="header2__title" style={{marginTop:'50px'}}>Cześć {this.state.name}!</h2>
 
                 <img
                     alt="avatar"
