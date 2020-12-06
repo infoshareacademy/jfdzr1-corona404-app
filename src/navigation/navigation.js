@@ -23,7 +23,7 @@ import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import { Link } from "react-router-dom";
 import firebase from 'firebase';
 import {useEffect, useState} from 'react';
-import Button from '@material-ui/core/button';
+import Button from '@material-ui/core/Button';
 import QueueIcon from '@material-ui/icons/Queue';
 import LanguageIcon from '@material-ui/icons/Language';
 import logo from '../assets/logo-corona.png';
