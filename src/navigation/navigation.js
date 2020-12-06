@@ -26,6 +26,7 @@ import {useEffect, useState} from 'react';
 import Button from '@material-ui/core/button';
 import QueueIcon from '@material-ui/icons/Queue';
 import LanguageIcon from '@material-ui/icons/Language';
+import logo from '../assets/logo-corona.png';
 
 
 
@@ -171,10 +172,15 @@ const signIn = () => {
         }}
       >
         <div className={classes.toolbar}>
+        <img
+                    alt="logo"
+                    style={{ width: '100px', height: '40px'}}
+                    src={logo}
+                />
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "rtl" ? (
               <ChevronRightIcon />
-            ) : (
+            ) : ( 
               <ChevronLeftIcon />
             )}
           </IconButton>
