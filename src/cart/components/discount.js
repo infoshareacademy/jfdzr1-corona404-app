@@ -5,11 +5,13 @@ import Checkbox from "@material-ui/core/Checkbox";
 import { FaCheckCircle } from "react-icons/fa";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import { Typography } from "@material-ui/core";
+import GenerateCode from "./generateDiscount";
 
 class Discount extends React.Component {
   state = {
     shouldShowDiscountBox: false,
     discountCode: "",
+    openGenerator: false,
   };
 
   handleOnClickCheckbox = () => {
@@ -30,6 +32,12 @@ class Discount extends React.Component {
         discountCode: "",
       });
     }, 1);
+  };
+
+  handleDisplayGeneratorChange = () => {
+    this.setState({
+      displayGenerator: true,
+    });
   };
 
   render() {
@@ -84,11 +92,12 @@ class Discount extends React.Component {
                 style={{ margin: "5px 0 15px" }}
                 label="Kod Rabatowy"
               />
+              <GenerateCode openGenerator={this.state.openGenerator} />
               <Button
                 onClick={this.handleDiscountChange}
                 type="submit"
-                variant="containd"
-                color="default"
+                color="secondary"
+                style={{ marginTop: "2px" }}
               >
                 Zrealizuj
               </Button>
