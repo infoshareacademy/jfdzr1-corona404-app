@@ -37,7 +37,9 @@ class Summary extends React.Component {
       discountCode: passedDiscountCode,
     });
 
-    if (passedDiscountCode === "CORONA") {
+    if (
+      passedDiscountCode === JSON.parse(localStorage.getItem("discountCode"))
+    ) {
       this.setState({
         succesPopup: true,
         errorPopup: false,
@@ -75,7 +77,7 @@ class Summary extends React.Component {
             <Typography variant="h7">
               Wysyłka :
               <span style={{ fontWeight: "800", float: "right" }}>
-                {this.state.discountCode === "CORONA"
+                {this.state.discountAccepted
                   ? "GRATIS"
                   : this.props.sendPrice + " zł"}
               </span>

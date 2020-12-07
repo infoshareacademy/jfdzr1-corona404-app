@@ -51,7 +51,7 @@ function GenerateCode() {
         "Oto Twój kod rabatowy, użyj go aby otrzymać darmową wysyłkę"
       );
     }
-  }, []);
+  }, [getData]);
 
   return (
     <div>
