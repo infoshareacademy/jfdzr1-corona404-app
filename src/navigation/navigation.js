@@ -270,27 +270,6 @@ export default function Navigation() {
           </Link>
         </List>
       </Drawer>
-
-      {/* <main className={classes.content} style={{margin:'0', padding:'0'}}>
-        <div className={classes.toolbar} />
-        <Typography paragraph >
-        
-          <Switch>
-            <Route exact path="/">
-              <Dashboard/>
-             </Route>
-             <Route path="/products">
-              <Cards/>
-             </Route>
-             <Route path="/cart">
-              <Cart/>
-             </Route>
-             <Route path="/form">
-              <Form/>
-             </Route>
-           </Switch>
-        </Typography>
-      </main> */}
     </div>
   );
 }
