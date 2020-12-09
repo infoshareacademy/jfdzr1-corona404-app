@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-expressions */
 import React from "react";
 import "./dashboard.css";
 import Rating from "@material-ui/lab/Rating";

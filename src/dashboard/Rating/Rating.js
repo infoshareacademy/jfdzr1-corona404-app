@@ -6,6 +6,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { withStyles } from "@material-ui/core/styles";
+import CommentPopup from "./CommentPopup";
 
 import Rating from "@material-ui/lab/Rating";
 
@@ -30,6 +31,7 @@ function RateUs() {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(0);
   const [comment, setComment] = useState(null);
+  const [showPopup, setShowPopup] = useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -57,6 +59,11 @@ function RateUs() {
     handleClose();
     setValue(0);
     setComment(null);
+    setShowPopup(true);
+
+    setTimeout(() => {
+      setShowPopup(false);
+    }, 2000);
   };
 
   const handleComment = (event) => {
@@ -109,11 +116,17 @@ function RateUs() {
           <Button onClick={handleClose} color="primary">
             Anuluj
           </Button>
-          <Button onClick={handleAccept} color="primary">
-            Dodaj Opinię
-          </Button>
+          {comment ? (
+            <Button onClick={handleAccept} color="primary">
+              Dodaj Opinię
+            </Button>
+          ) : null}
         </DialogActions>
       </Dialog>
+
+      <div>
+        {showPopup === true && <CommentPopup open={showPopup}></CommentPopup>}
+      </div>
     </div>
   );
 }
