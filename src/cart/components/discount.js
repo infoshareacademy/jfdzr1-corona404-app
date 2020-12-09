@@ -42,22 +42,7 @@ class Discount extends React.Component {
 
   render() {
     if (this.props.discountAccepted === true) {
-      return (
-        <div className="discount">
-          <Typography
-            variant="h6"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              fontWeight: "400",
-              paddingLeft: "20px",
-            }}
-          >
-            <FaCheckCircle style={{ marginRight: "20px", color: "#88c238" }} />
-            Kod Rabatowy
-          </Typography>
-        </div>
-      );
+      return null;
     } else {
       return (
         <div className="discount">
