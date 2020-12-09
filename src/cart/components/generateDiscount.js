@@ -65,7 +65,7 @@ function GenerateCode() {
         className="rate-modal"
         open={open}
         maxWidth="xs"
-        fullWidth="true"
+        fullWidth
         onClose={handleClose}
         aria-labelledby="form-dialog-title"
       >

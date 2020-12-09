@@ -43,10 +43,9 @@
 
 .header2__container {
   grid-area: title2;
-  height: 100%;
   text-align: center;
   border: 1px white solidariant= "contained" color= "secondary";
-  margin-bottom: 3vh;
+  margin-bottom: 10vh;
 }
 
 .header2__title {
@@ -206,6 +205,7 @@
   .header2__container {
     margin-top: 200px;
     transform: translateY(30px);
+    border: 2px red solid;
   }
 
   .graph_container {

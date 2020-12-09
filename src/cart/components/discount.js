@@ -2,9 +2,7 @@ import React from "react";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Checkbox from "@material-ui/core/Checkbox";
-import { FaCheckCircle } from "react-icons/fa";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-import { Typography } from "@material-ui/core";
 import GenerateCode from "./generateDiscount";
 
 class Discount extends React.Component {

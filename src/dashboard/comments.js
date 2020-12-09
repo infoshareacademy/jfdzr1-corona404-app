@@ -20,7 +20,7 @@ function Comments({ commentsToDisplay }) {
       <div className="comments">
         {commentsToDisplay.map((comment) => {
           return (
-            <div className="comment">
+            <div className="comment" key={comment.id}>
               <Typography variant="h5">"{comment.comment}"</Typography>
               <Typography
                 variant="h6"
