@@ -22,6 +22,7 @@ class ProductModal extends React.Component {
               <img
                 src={this.props.product.image}
                 className="modal_img_wrapper"
+                alt="Img fo product"
               />
             </div>
             <p className="origin">
