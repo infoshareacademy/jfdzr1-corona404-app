@@ -21,7 +21,7 @@ class Products extends React.Component {
 
               <div className="product__midbox">
                 <Typography variant="h5">{product.name}</Typography>
-                <Typography variant="h7">{product.opis}</Typography>
+                <Typography variant="subtitle1">{product.opis}</Typography>
                 <Button
                   style={{ fontSize: "12px", width: "80px", top: "10%" }}
                   onClick={() => this.props.handleOnDelete(product.id)}
@@ -47,8 +47,8 @@ class Products extends React.Component {
                   <MenuItem value={4}>4</MenuItem>
                   <MenuItem value={5}>5</MenuItem>
                 </Select>
-                <Typography variant="h7">{product.amount}</Typography>
-                <Typography variant="h7" style={{ width: "80%" }}>
+                <Typography variant="subtitle1">{product.amount}</Typography>
+                <Typography variant="subtitle1" style={{ width: "80%" }}>
                   {product.price.value} zł
                 </Typography>
               </div>
