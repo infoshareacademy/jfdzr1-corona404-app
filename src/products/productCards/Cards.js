@@ -23,6 +23,7 @@ class Cards extends React.Component {
     openAddedPopup: false,
     openAlreadyAddedPopup: false,
     filteredList: [],
+    productCategory: [],
     filter: "",
     priceMin: 0,
     priceMax: 300,
@@ -103,6 +104,20 @@ class Cards extends React.Component {
             product.price.value >= this.state.priceMin &&
             product.price.value <= this.state.priceMax
           );
+        })
+        .filter((product) => {
+          switch (this.state.productCategory) {
+            case 10:
+              return product.category == "food";
+            case 20:
+              return product.category == "drinks";
+            case 30:
+              return product.category == "clothes";
+            case 40:
+              return product.category == "others";
+            default:
+              return product;
+          }
         }),
 
       currentPage: 1,
@@ -142,6 +157,16 @@ class Cards extends React.Component {
       currentPage: pageNumber,
     });
   };
+  handleOnDropDownChange = (newDropDownValue) => {
+    this.setState(
+      {
+        productCategory: newDropDownValue,
+      },
+      () => {
+        this.applyFilter();
+      }
+    );
+  };
 
   render() {
     const lastIndex = this.state.currentPage * this.state.productsPerPage;
@@ -169,7 +194,10 @@ class Cards extends React.Component {
             </div>
 
             <div className={"dropdown"}>
-              <CategorySearch />
+              <CategorySearch
+                onDropDownChange={this.handleOnDropDownChange}
+                dropDownValue={this.state.productCategory}
+              />
             </div>
           </div>
 
