@@ -28,7 +28,7 @@ class Cards extends React.Component {
     priceMin: 0,
     priceMax: 300,
     currentPage: 1,
-    productsPerPage: 8,
+    productsPerPage: 12,
     isLoading: true,
   };
 
@@ -253,11 +253,11 @@ class Cards extends React.Component {
                   ></AlreadyAddedPopup>
                 )}
               </div>
-              {/* <BasicPagination
+              <BasicPagination
                 productsPerPage={this.state.productsPerPage}
                 productsLength={this.state.filteredList.length}
                 updatePage={this.pageChanged}
-              /> */}
+              />
             </>
           )}
         </div>
