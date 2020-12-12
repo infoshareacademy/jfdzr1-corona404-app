@@ -53,11 +53,11 @@ class ProductCard extends React.Component {
                 </span>
               </div>
             </div>
-            <Button size="small">
-              <ShoppingCartIcon
-                style={{ fontSize: "1.75rem" }}
-                onClick={() => this.props.handleAddToCart(this.props.product)}
-              />
+            <Button
+              size="small"
+              onClick={() => this.props.handleAddToCart(this.props.product)}
+            >
+              <ShoppingCartIcon style={{ fontSize: "1.75rem" }} />
             </Button>
           </CardActions>
         </Card>

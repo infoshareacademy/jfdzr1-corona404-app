@@ -21,14 +21,12 @@ import SearchIcon from "@material-ui/icons/Search";
 import ContactMailIcon from "@material-ui/icons/ContactMail";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import { Link } from "react-router-dom";
-import firebase from 'firebase';
-import {useEffect, useState} from 'react';
-import Button from '@material-ui/core/Button';
-import QueueIcon from '@material-ui/icons/Queue';
-import LanguageIcon from '@material-ui/icons/Language';
-import logo from '../assets/logo-corona.png';
-
-
+import firebase from "firebase";
+import { useEffect, useState } from "react";
+import Button from "@material-ui/core/Button";
+import QueueIcon from "@material-ui/icons/Queue";
+import LanguageIcon from "@material-ui/icons/Language";
+import logo from "../assets/logo-corona.png";
 
 const drawerWidth = 220;
 
@@ -93,18 +91,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
 export default function Navigation() {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const [user, setUser] = useState(null);
   useEffect(() => {
-  firebase.auth().onAuthStateChanged(user => {
-        setUser(user)
-      });
+    firebase.auth().onAuthStateChanged((user) => {
+      setUser(user);
+    });
   }, []);
-  
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -116,13 +112,12 @@ export default function Navigation() {
 
   const signOut = () => {
     firebase.auth().signOut();
-}
+  };
 
-const signIn = () => {
-  firebase.auth().signInWithEmailAndPassword();
-}
+  const signIn = () => {
+    firebase.auth().signInWithEmailAndPassword();
+  };
 
-  
   return (
     <div className={classes.root} style={{ paddingTop: 56 }}>
       <CssBaseline />
@@ -138,8 +133,7 @@ const signIn = () => {
           [classes.appBarShift]: open,
         })}
       >
-        <Toolbar style={{display: 'flex'}}
-        >
+        <Toolbar style={{ display: "flex" }}>
           <IconButton
             style={{ color: "green" }}
             color="inherit"
@@ -155,7 +149,22 @@ const signIn = () => {
           <Typography variant="h6" noWrap>
             Sklep 404 - Tylko Polska jakość!
           </Typography>
- <div style={{marginLeft:'auto'}}>{user ? <Button onClick={signOut} style={{color: 'white', border:'1px white solid'}}>Wyloguj</Button> : <Link to="/sign-in" style={{textDecoration: 'none'}}><Button style={{color: 'white', border:'1px white solid'}}>Zaloguj</Button></Link>}</div>
+          <div style={{ marginLeft: "auto" }}>
+            {user ? (
+              <Button
+                onClick={signOut}
+                style={{ color: "white", border: "1px white solid" }}
+              >
+                Wyloguj
+              </Button>
+            ) : (
+              <Link to="/sign-in" style={{ textDecoration: "none" }}>
+                <Button style={{ color: "white", border: "1px white solid" }}>
+                  Zaloguj
+                </Button>
+              </Link>
+            )}
+          </div>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -172,15 +181,15 @@ const signIn = () => {
         }}
       >
         <div className={classes.toolbar}>
-        <img
-                    alt="logo"
-                    style={{ width: '100px', height: '40px'}}
-                    src={logo}
-                />
+          <img
+            alt="logo"
+            style={{ width: "100px", height: "40px" }}
+            src={logo}
+          />
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "rtl" ? (
               <ChevronRightIcon />
-            ) : ( 
+            ) : (
               <ChevronLeftIcon />
             )}
           </IconButton>
@@ -228,47 +237,39 @@ const signIn = () => {
             style={{ textDecoration: "none", display: "flex", color: "black" }}
           >
             <ListItem button style={{ height: "80px" }}>
-              <ListItemIcon><QueueIcon/></ListItemIcon>
+              <ListItemIcon>
+                <QueueIcon />
+              </ListItemIcon>
               <ListItemText>Dodaj produkt</ListItemText>
             </ListItem>
           </Link>
 
-          <Link to="/profile" style={{ textDecoration: 'none', display: 'flex', color: 'black' }}>
+          <Link
+            to="/profile"
+            style={{ textDecoration: "none", display: "flex", color: "black" }}
+          >
             <ListItem button style={{ height: "80px" }}>
-              <ListItemIcon><ContactMailIcon /></ListItemIcon>
+              <ListItemIcon>
+                <ContactMailIcon />
+              </ListItemIcon>
               <ListItemText>Profil</ListItemText>
             </ListItem>
           </Link>
           <hr></hr>
-          <Link to={{ pathname: "http://www.corona404.jfdzr1.is-academy.pl/" }} target="_blank" style={{ textDecoration: 'none', display: 'flex', color: 'black'}} >
-          <ListItem button style={{ height: "80px" }}>
-              <ListItemIcon><LanguageIcon /></ListItemIcon>
+          <Link
+            to={{ pathname: "http://www.corona404.jfdzr1.is-academy.pl/" }}
+            target="_blank"
+            style={{ textDecoration: "none", display: "flex", color: "black" }}
+          >
+            <ListItem button style={{ height: "80px" }}>
+              <ListItemIcon>
+                <LanguageIcon />
+              </ListItemIcon>
               <ListItemText>Corona404</ListItemText>
             </ListItem>
           </Link>
         </List>
       </Drawer>
-
-      {/* <main className={classes.content} style={{margin:'0', padding:'0'}}>
-        <div className={classes.toolbar} />
-        <Typography paragraph >
-        
-          <Switch>
-            <Route exact path="/">
-              <Dashboard/>
-             </Route>
-             <Route path="/products">
-              <Cards/>
-             </Route>
-             <Route path="/cart">
-              <Cart/>
-             </Route>
-             <Route path="/form">
-              <Form/>
-             </Route>
-           </Switch>
-        </Typography>
-      </main> */}
     </div>
   );
 }
