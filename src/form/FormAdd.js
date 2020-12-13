@@ -2,9 +2,10 @@ import React from "react";
 import validate from "./validateInfo";
 import useForm from "./useForm";
 import "./Form.css";
+import HomeIcon from '@material-ui/icons/Home';
 
 const FormAdd = ({ submitForm }) => {
-  const { handleChange, handleSubmit, values, errors } = useForm(
+  const { handleChange, handleSubmit, readImages, AddProduct, state, errors, category, company, price, unitlimit, description, longDescription, name, origin, amount, unit, value, id, image } = useForm(
     submitForm,
     validate
   );
@@ -12,77 +13,121 @@ const FormAdd = ({ submitForm }) => {
   return (
     <div className="form-content-right">
       <span className="close-btn">
-        <a href="/">x</a>
+        <a href="/"><HomeIcon /></a>
       </span>
       <form onSubmit={handleSubmit} className="form" noValidate>
         <h2>Zacznij sprzedawać już teraz!</h2>
         <h2>Dodaj produkt</h2>
         <div className="form-inputs">
-          <label className="form-label">Imię i nazwisko</label>
+          <label className="form-label"> Nazwa produktu </label>
           <input
             className="form-input"
             type="text"
-            name="username"
-            placeholder="Wprowadź swoje imię i nazwisko"
-            value={values.username}
+            name="name"
+            placeholder="Wprowadź nazwe produktu"
+            value={name}
             onChange={handleChange}
           />
-          {errors.username && <p>{errors.username}</p>}
+          {errors.name && <p>{errors.name}</p>}
         </div>
         <div className="form-inputs">
-          <label className="form-label">Email</label>
+          <label className="form-label">Kategoria produktu </label>
           <input
             className="form-input"
-            type="email"
-            name="email"
-            placeholder="Wprowadź swój email"
-            value={values.email}
-            onChange={handleChange}
-          />
-          {errors.email && <p>{errors.email}</p>}
-        </div>
-        <div className="form-inputs">
-          <label className="form-label">Nazwa produktu</label>
-          <input
-            className="form-input"
-            type="name_of_product"
-            name="name_of_product"
-            placeholder="Wprowadź nazwę produktu"
-            value={values.name_of_product}
-            onChange={handleChange}
-          />
-          {errors.name_of_product && <p>{errors.name_of_product}</p>}
-        </div>
-        <div className="form-inputs">
-          <label className="form-label">Kategoria produktu</label>
-          <input
-            className="form-input"
-            type="category_of_product"
-            name="category_of_product"
+            type="text"
+            name="category"
             placeholder="Wprowadź kategorie produktu"
-            value={values.category_of_product}
+            value={category}
             onChange={handleChange}
           />
-          {errors.category_of_product && <p>{errors.category_of_product}</p>}
+          {errors.category && <p>{errors.category}</p>}
+        </div>
+        <div className="form-inputs">
+          <label className="form-label">Opis produktu</label>
+          <input
+            className="form-input"
+            type="text"
+            name="description"
+            placeholder="Wprowadź opis produktu"
+            value={description}
+            onChange={handleChange}
+          />
+          {errors.description && <p>{errors.description}</p>}
+        </div>
+        <div className="form-inputs">
+          <label className="form-label">Długi opis produktu</label>
+          <textarea
+            className="form-textarea"
+            type="text"
+            name="LongDescription"
+            placeholder="Opisz swój produkt"
+            value={longDescription}
+            onChange={handleChange}
+          />
+          {errors.longDescription && <p>{errors.longDescription}</p>}
+        </div>
+        <div className="form-inputs">
+          <label className="form-label">Pochodzenie produktu</label>
+          <input
+            className="form-input"
+            type="text"
+            name="origin"
+            placeholder="Wprowadź pochodzenie produktu"
+            value={origin}
+            onChange={handleChange}
+          />
+          {errors.origin && <p>{errors.origin}</p>}
         </div>
         <div className="form-inputs">
           <label className="form-label">Ilość</label>
           <input
             className="form-input"
-            type="quantity_of_product"
-            name="quantity_of_product"
-            placeholder="Wprowadź ilość"
-            value={values.quantity_of_product}
+            type="text"
+            name="amount"
+            placeholder="Podaj ilość"
+            value={amount}
             onChange={handleChange}
           />
-          {errors.quantity_of_product && <p>{errors.quantity_of_product}</p>}
+          {errors.amount && <p>{errors.amount}</p>}
         </div>
-        <button className="form-input-btn" type="submit">
+        <div className="form-inputs">
+          <label className="form-label">Jednostka miary</label>
+          <input
+            className="form-input"
+            type="text"
+            name="unit"
+            placeholder="Podaj jednostkę"
+            value={unit}
+            onChange={handleChange}
+          />
+          {errors.unit && <p>{errors.unit}</p>}
+        </div>
+        <div className="form-inputs">
+          <label className="form-label">Cena</label>
+          <input
+            className="form-input"
+            type="text"
+            name="value"
+            placeholder="Podaj wartość"
+            value={value}
+            onChange={handleChange}
+          />
+          {errors.value && <p>{errors.value}</p>}
+        </div>
+        <input
+          className="form-button-upload"
+          type="file"
+          name="image"
+          value=""
+          onChange={readImages}
+        />
+        <button className="form-input-btn" type="submit" onClick={AddProduct}>
           Dodaj
-        </button>
+</button>
       </form>
     </div>
   );
 };
 
 export default FormAdd;
+

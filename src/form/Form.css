@@ -17,9 +17,8 @@
     display: flex;
     margin: 100px auto;
     width: 1000px;
-    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2);
     border-radius: 10px;
-    height: 700px;
+    height: auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
@@ -42,6 +41,7 @@
     background-color: #76B5DA;
     border-radius: 10px 0 0 10px;
     position: relative;
+    width: 600px;
   }
   
   .form-img {
@@ -63,6 +63,9 @@
   }
   
   .form-success {
+    position: relative;
+    width: 600px;
+    height: 900px;
     text-align: center;
     font-size: 24px;
     margin-top: 80px;
@@ -73,15 +76,18 @@
     border-radius: 0 10px 10px 0;
     position: relative;
     background-color: #83C5BE;
+    width: 600px;
   }
   
   .form {
-    position: absolute;
+    position: relative;
+    padding-top: 20px;
+    padding-bottom: 20px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 90%;
-    height: 100%;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -159,4 +165,15 @@
     text-decoration: none;
     color: #27cdff;
     font-weight: 600;
+  }
+
+  .form-textarea{
+  width: 435px;
+	height: 120px;
+	border: 3px solid #cccccc;
+	padding: 5px;
+	font-family: Tahoma, sans-serif;
+	background-position: bottom right;
+  background-repeat: no-repeat;
+  resize: vertical;
   }
