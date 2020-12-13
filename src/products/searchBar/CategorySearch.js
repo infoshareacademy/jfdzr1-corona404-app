@@ -48,10 +48,11 @@ const CategorySearch = ({ onDropDownChange, dropDownValue }) => {
           value={age}
           onChange={handleChange}
         >
-          <MenuItem value={age}>food</MenuItem>
-          <MenuItem value={10}>drinks</MenuItem>
-          <MenuItem value={20}>clothes</MenuItem>
-          <MenuItem value={30}>others</MenuItem>
+          <MenuItem value={0}>Wszystkie kategorie</MenuItem>
+          <MenuItem value={10}>Jedzenie</MenuItem>
+          <MenuItem value={20}>Napoje</MenuItem>
+          <MenuItem value={30}>Ubrania</MenuItem>
+          <MenuItem value={40}>Inne</MenuItem>
         </Select>
       </FormControl>
     </>
