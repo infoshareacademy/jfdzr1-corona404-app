@@ -11,7 +11,7 @@ const Form = () => {
   }
   return (
     <>
-      <section class="form-body">
+      <section className="form-body">
         <div className="form-container">
           <div className="form-content-left">
             <img className="form-img" src={Shopping} alt="shopping" />
