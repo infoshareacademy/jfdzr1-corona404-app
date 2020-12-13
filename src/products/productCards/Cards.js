@@ -32,6 +32,7 @@ class Cards extends React.Component {
     currentPage: 1,
     productsPerPage: 12,
     isLoading: true,
+    sortPrice: '',
   };
 
   fetchData = () => {
@@ -124,9 +125,9 @@ class Cards extends React.Component {
         .filter((product) => {
           switch (this.state.sortPrice) {
             case 1:
-              return (product.price).sort((a, b) => (a.price > b.price) ? 1 : -1);
+              return product.price.value.sort((a, b) => (a.price.value > b.price) ? case1 : product);
             case 2:
-              return (product.price).sort((a, b) => (a.price < b.price) ? 1 : -1);
+              return product.price.value.sort((a, b) => (a.price.value < b.price) ? 1 : -1);
             case 3:
               return product;
             default:
