@@ -13,6 +13,8 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 // import ProductList from "../searchBar/ProductList";
 import ErrorDiv from "../searchBar/error";
 import RadioButtonsGroup from "../searchBar/ProductsPerPage";
+import SortingPrice from "../searchBar/SortingPrice";
+import { Height } from "@material-ui/icons";
 
 const DATABASE_URL = "https://corona404-2499f.firebaseio.com";
 
@@ -23,11 +25,12 @@ class Cards extends React.Component {
     openAddedPopup: false,
     openAlreadyAddedPopup: false,
     filteredList: [],
+    productCategory: [],
     filter: "",
     priceMin: 0,
     priceMax: 300,
     currentPage: 1,
-    productsPerPage: 8,
+    productsPerPage: 12,
     isLoading: true,
   };
 
@@ -103,6 +106,32 @@ class Cards extends React.Component {
             product.price.value >= this.state.priceMin &&
             product.price.value <= this.state.priceMax
           );
+        })
+        .filter((product) => {
+          switch (this.state.productCategory) {
+            case 10:
+              return product.category == "food";
+            case 20:
+              return product.category == "drinks";
+            case 30:
+              return product.category == "clothes";
+            case 40:
+              return product.category == "others";
+            default:
+              return product;
+          }
+        })
+        .filter((product) => {
+          switch (this.state.sortPrice) {
+            case 1:
+              return (product.price).sort((a, b) => (a.price > b.price) ? 1 : -1);
+            case 2:
+              return (product.price).sort((a, b) => (a.price < b.price) ? 1 : -1);
+            case 3:
+              return product;
+            default:
+              return product;
+          }
         }),
 
       currentPage: 1,
@@ -142,6 +171,25 @@ class Cards extends React.Component {
       currentPage: pageNumber,
     });
   };
+  handleOnDropDownChange = (newDropDownValue) => {
+    this.setState(
+      {
+        productCategory: newDropDownValue,
+      },
+      () => {
+        this.applyFilter();
+      }
+    );
+  };
+
+  sortPrice = (value) => {
+    this.setState({
+      sortPrice: value,
+    },
+    () => {
+      this.applyFilter();
+    });
+  }
 
   render() {
     const lastIndex = this.state.currentPage * this.state.productsPerPage;
@@ -169,7 +217,10 @@ class Cards extends React.Component {
             </div>
 
             <div className={"dropdown"}>
-              <CategorySearch />
+              <CategorySearch
+                onDropDownChange={this.handleOnDropDownChange}
+                dropDownValue={this.state.productCategory}
+              />
             </div>
           </div>
 
@@ -178,15 +229,22 @@ class Cards extends React.Component {
           </div>
 
           <div
-            style={{
-              marginLeft: "auto",
-              marginRight: "auto",
-              textAlign: "center",
-            }}
-          >
-            {/* <RadioButtonsGroup
-              onProductsPerPageChanged={this.productsPerPageChanged}
-            /> */}
+          style={{
+            display: "flex",
+            justifyContent: "space-around",
+            textAlign: "center",
+          }}>
+            <div>
+              <RadioButtonsGroup
+                onProductsPerPageChanged={this.productsPerPageChanged}
+              />
+            </div>
+            
+            <div>
+              <SortingPrice 
+                onSortPrice={this.sortPrice}
+              />
+            </div>
           </div>
 
           {this.state.isLoading ? (
@@ -225,11 +283,11 @@ class Cards extends React.Component {
                   ></AlreadyAddedPopup>
                 )}
               </div>
-              {/* <BasicPagination
+              <BasicPagination
                 productsPerPage={this.state.productsPerPage}
                 productsLength={this.state.filteredList.length}
                 updatePage={this.pageChanged}
-              /> */}
+              />
             </>
           )}
         </div>
