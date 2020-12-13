@@ -94,7 +94,7 @@ export class Profile extends React.Component {
             backgroundImage: "linear-gradient(#ffffff 0%, #b2dddf 91%)"
           }}
         >
-          <h1 className="header2__span">Uzupełnij Profil</h1>
+          <h1 className="header2__span" style={{margin:"25px"}}>Uzupełnij Profil</h1>
 
           <h2 className="header2__title" style={{ marginTop: "50px" }}>
             Cześć {this.state.name}!
@@ -103,8 +103,8 @@ export class Profile extends React.Component {
           <img
             alt="avatar"
             style={{
-              width: "200px",
-              height: "180px",
+              width: "240px",
+              height: "210px",
               marginBottom: "15px",
               borderRadius: "25px",
             }}
@@ -165,10 +165,10 @@ export class Profile extends React.Component {
               onChange={this.handleOnDataChage}
             />
             <Button
-              variant="contained"
+              variant="outlined"
               color="primary"
               type="submit"
-              style={{ marginTop: "10px" }}
+              style={{ marginTop: "20px" }}
             >
               Save
             </Button>
