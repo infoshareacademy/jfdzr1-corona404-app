@@ -83,6 +83,13 @@ const useForm = (callback, validate) => {
   // DataProducts.push(products.state)
 
   // }
+  
+  useEffect(() => {
+    if (Object.keys(errors).length === 0 && isSubmitting) {
+      callback();
+    }
+  }, [callback, errors, isSubmitting]);
+
 
   function AddProduct(data){
     const { 

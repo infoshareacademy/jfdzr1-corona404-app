@@ -37,7 +37,9 @@ class Summary extends React.Component {
       discountCode: passedDiscountCode,
     });
 
-    if (passedDiscountCode === "CORONA") {
+    if (
+      passedDiscountCode === JSON.parse(localStorage.getItem("discountCode"))
+    ) {
       this.setState({
         succesPopup: true,
         errorPopup: false,
@@ -64,7 +66,7 @@ class Summary extends React.Component {
         <Typography variant="h5">Podsumowanie</Typography>
         <div className="summary_values">
           <div style={{ marginBottom: "30px" }}>
-            <Typography variant="h7">
+            <Typography variant="subtitle1">
               Łączna kwota <br /> (w tym VAT) :
               <span style={{ fontWeight: "800", float: "right" }}>
                 {this.props.totalPrice} zł
@@ -72,16 +74,16 @@ class Summary extends React.Component {
             </Typography>
           </div>
           <div>
-            <Typography variant="h7">
+            <Typography variant="subtitle1">
               Wysyłka :
               <span style={{ fontWeight: "800", float: "right" }}>
-                {this.state.discountCode === "CORONA"
+                {this.state.discountAccepted
                   ? "GRATIS"
                   : this.props.sendPrice + " zł"}
               </span>
             </Typography>
           </div>
-          <div style={{ textAlign: "center", marginTop: "50px" }}>
+          <div style={{ textAlign: "center", marginTop: "40px" }}>
             <StyledButton className="order_button">Zamów</StyledButton>
           </div>
         </div>
