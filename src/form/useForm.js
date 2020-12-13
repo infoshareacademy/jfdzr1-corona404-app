@@ -10,13 +10,13 @@ const useForm = (callback, validate) => {
     price: 10,
     unitlimit: false,
     description: "",
-    image: "",
     longDescription: "",
     name: "",
     origin: "",
     amount: 0,
     unit: "",
     value: 0,
+    id: 15,
   })
 
   const [errors, setErrors] = useState({});
@@ -35,7 +35,7 @@ const useForm = (callback, validate) => {
   
     setErrors(validate(state));
     setIsSubmitting(true);
-    getImageURL();
+    AddProduct(state);
   };
 
   useEffect(
@@ -46,37 +46,67 @@ const useForm = (callback, validate) => {
     },
     [errors]
   );
+  // useEffect(()=>{
+  //   getImageURL();
+  // }, [])
 
   const readImages = async (e) => {
     const file = e.target.files[0];
     const id = uuid();
     const storageRef = firebase.storage().ref('/products').child(id);
-    const fileRef = storageRef.child(file.name)
     await storageRef.put(file);
     storageRef.getDownloadURL().then((url)=> {
-      fileRef.push(url);
+      setState({
+        ...state,
+        image: url
+      });
     })
   }
 
-const getImageURL = () => {
-  const id = uuid();
-  const imageRef = firebase.storage().ref('/products').child(id);
-  imageRef.on('value', (snapshot)=> {
-    const image = snapshot.val();
-    const newState = [...state, ...image]
-    setState(newState);
-  })
-}
+// const getImageURL = () => {
+//   const id = uuid();
+//   const imageRef = firebase.storage().ref('/products').child(id);
+//   imageRef.on('value', (snapshot)=> {
+//     const image = snapshot.val();
+//     const newState = [...state, ...image]
+//     setState(newState);
+//   })
+// }
 
-  const AddProduct = () => {
-    const DataProducts = firebase.database().ref('products');
+  // const AddProduct = () => {
+  //   const DataProducts = firebase.database().ref('products');
 
-    const products = {
-      state: state
-    }
+  //   const products = {
+  //     state: state
+  //   }
   
-  DataProducts.push(products.state)
+  // DataProducts.push(products.state)
 
+  // }
+
+  function AddProduct(data){
+    const { category, company, price, unitlimit, description, longDescription, name, origin, amount, unit, value, id, image} = data
+    firebase.database().ref('products').push({
+      category,
+      delivery: {
+        0: {
+          company,
+          price,
+          unitlimit
+        }
+      },
+      description,
+      id,
+      image,
+      longDescription,
+      name,
+      origin,
+      price: {
+        amount,
+        unit,
+        value
+      }
+    })
   }
   return { handleChange, handleSubmit, readImages, AddProduct, state, errors };
 };

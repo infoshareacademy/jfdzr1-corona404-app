@@ -1,6 +1,10 @@
 export default function validateInfo(state) {
   let errors = {};
 
+  if (!state.name) {
+    errors.name = "Nazwa jest wymagana!";
+  } 
+
   if (!state.category) {
     errors.category = "Kategoria jest wymagana!";
   } 

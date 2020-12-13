@@ -5,7 +5,7 @@ import "./Form.css";
 import HomeIcon from '@material-ui/icons/Home';
 
 const FormAdd = ({ submitForm }) => {
-  const { handleChange, handleSubmit, readImages, AddProduct, state, errors} = useForm(
+  const { handleChange, handleSubmit, readImages, AddProduct, state, errors, category, company, price, unitlimit, description, longDescription, name, origin, amount, unit, value, id, image } = useForm(
     submitForm,
     validate
   );
@@ -25,7 +25,7 @@ const FormAdd = ({ submitForm }) => {
             type="text"
             name="name"
             placeholder="Wprowadź nazwe produktu"
-            value={state.name}
+            value={name}
             onChange={handleChange}
           />
           {errors.name && <p>{errors.name}</p>}
@@ -37,7 +37,7 @@ const FormAdd = ({ submitForm }) => {
             type="text"
             name="category"
             placeholder="Wprowadź kategorie produktu"
-            value={state.category}
+            value={category}
             onChange={handleChange}
           />
           {errors.category && <p>{errors.category}</p>}
@@ -49,7 +49,7 @@ const FormAdd = ({ submitForm }) => {
             type="text"
             name="description"
             placeholder="Wprowadź opis produktu"
-            value={state.description}
+            value={description}
             onChange={handleChange}
           />
           {errors.description && <p>{errors.description}</p>}
@@ -61,7 +61,7 @@ const FormAdd = ({ submitForm }) => {
             type="text"
             name="LongDescription"
             placeholder="Opisz swój produkt"
-            value={state.LongDescription}
+            value={longDescription}
             onChange={handleChange}
           />
           {errors.LongDescription && <p>{errors.LongDescription}</p>}
@@ -73,7 +73,7 @@ const FormAdd = ({ submitForm }) => {
             type="text"
             name="origin"
             placeholder="Wprowadź pochodzenie produktu"
-            value={state.origin}
+            value={origin}
             onChange={handleChange}
           />
           {errors.origin && <p>{errors.origin}</p>}
@@ -85,7 +85,7 @@ const FormAdd = ({ submitForm }) => {
             type="text"
             name="amount"
             placeholder="Podaj ilość"
-            value={state.amount}
+            value={amount}
             onChange={handleChange}
           />
           {errors.amount && <p>{errors.amount}</p>}
@@ -97,7 +97,7 @@ const FormAdd = ({ submitForm }) => {
             type="text"
             name="unit"
             placeholder="Podaj jednostkę"
-            value={state.unit}
+            value={unit}
             onChange={handleChange}
           />
           {errors.unit && <p>{errors.unit}</p>}
@@ -109,7 +109,7 @@ const FormAdd = ({ submitForm }) => {
             type="text"
             name="value"
             placeholder="Podaj wartość"
-            value={state.value}
+            value={value}
             onChange={handleChange}
           />
           {errors.value && <p>{errors.value}</p>}
@@ -118,7 +118,7 @@ const FormAdd = ({ submitForm }) => {
           className="form-button-upload"
           type="file"
           name="image"
-          value={state.image}
+          value=""
           onChange={readImages}
         />
         <button className="form-input-btn" type="submit" onClick={AddProduct}>
