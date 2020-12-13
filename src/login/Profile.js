@@ -90,7 +90,8 @@ export class Profile extends React.Component {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            marginTop: "20px",
+            height:"100vh",
+            backgroundImage: "linear-gradient(#ffffff 0%, #b2dddf 91%)"
           }}
         >
           <h1 className="header2__span">Uzupełnij Profil</h1>
@@ -132,7 +133,7 @@ export class Profile extends React.Component {
                 color="secondary"
                 startIcon={<PhotoCamera />}
               >
-                Wybierz zdjęcie.
+                Zmień avatar.
               </Button>
             </label>
             {this.state.file && (
