@@ -205,7 +205,6 @@
   .header2__container {
     margin-top: 200px;
     transform: translateY(30px);
-    border: 2px red solid;
   }
 
   .graph_container {
